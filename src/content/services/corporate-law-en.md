@@ -1,7 +1,7 @@
 ---
 title: 'Corporate Law'
 locale: 'en'
-description: 'Business legal support, reorganizations, company formation'
+description: 'Support for M&A transactions, company formation and restructuring, development of corporate documents.'
 category: 'Business Services'
 order: 1
 draft: false
@@ -11,15 +11,15 @@ draft: false
 
 ## Service Description
 
-We provide comprehensive business legal support, including company formation and restructuring, corporate document development, transaction support, and more.
+We provide a full range of services in corporate law, assisting clients at all stages of a company’s life cycle—from formation to reorganization and support for complex M&A transactions.
 
 ## Our Corporate Law Services
 
 - Company Formation
 - Company Reorganization and Liquidation
 - Development of Charter Documents
-- Transaction Support
-- Corporate Consultations
+- Legal support for M&A transactions
+- Corporate governance and compliance
 
 ## Process
 

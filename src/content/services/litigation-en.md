@@ -1,7 +1,7 @@
 ---
 title: 'Litigation'
 locale: 'en'
-description: 'Court representation, arbitration and dispute resolution'
+description: 'Representation in courts of all instances, arbitration, mediation, and pre-trial dispute resolution.'
 category: 'Litigation Services'
 order: 2
 draft: false
@@ -11,15 +11,14 @@ draft: false
 
 ## Service Description
 
-Our team of experienced attorneys provides court representation services at all levels, including arbitration courts.
+Our team of experienced attorneys and lawyers provides representation services in courts of all instances, including arbitration courts, as well as mediation services.
 
 ## Our Litigation Services
 
 - Representation in General Jurisdiction Courts
 - Representation in Arbitration Courts
 - Pre-litigation Dispute Resolution
-- Enforcement Proceedings
-- Appeal and Cassation Appeals
+- Mediation and negotiations
 
 ## Process
 
