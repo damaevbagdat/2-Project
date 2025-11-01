@@ -1,0 +1,8 @@
+---
+import { redirect } from 'astro:middleware';
+
+// Redirect the root-level index page to the default language version (Russian)
+export async function get() {
+  return redirect('/ru/', 301);
+}
+---

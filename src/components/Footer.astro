@@ -1,0 +1,106 @@
+---
+// src/components/Footer.astro
+import '../styles/global.css';
+import { t, localizePath } from '../i18n/index';
+export interface Props { lang?: string }
+const { lang = 'ru' } = Astro.props;
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Halcyon</h3>
+        <p>{t('footer.tagline', lang)}</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>{t('footer.contact', lang)}</h4>
+        <p>+7 (XXX) XXX-XX-XX</p>
+        <p>info@halcyon.kz</p>
+        <p>{t('footer.address', lang)}</p>
+      </div>
+      
+      <div class="footer-section">
+        <h4>{t('footer.social', lang)}</h4>
+        <div class="social-links">
+          <a href="#" aria-label="WhatsApp">WhatsApp</a>
+          <a href="#" aria-label="Telegram">Telegram</a>
+          <a href="#" aria-label="Instagram">Instagram</a>
+        </div>
+      </div>
+      
+      <div class="footer-section">
+        <h4>{t('footer.nav', lang)}</h4>
+        <nav aria-label="Дополнительная навигация">
+          <ul class="footer-nav">
+            <li><a href={localizePath('/', lang)}>{t('nav.home', lang)}</a></li>
+            <li><a href={localizePath('/about', lang)}>{t('nav.about', lang)}</a></li>
+            <li><a href={localizePath('/services', lang)}>{t('nav.services', lang)}</a></li>
+            <li><a href={localizePath('/contact', lang)}>{t('nav.contact', lang)}</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2025 Halcyon. {t('footer.copyright', lang)}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+.footer {
+  background-color: var(--primary-color);
+  color: var(--text-light);
+  padding: 2rem 0 1rem;
+  margin-top: 3rem;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-section h3,
+.footer-section h4 {
+  margin-bottom: 1rem;
+  color: var(--accent-color);
+}
+
+.footer-section p,
+.footer-section a {
+  color: var(--background-light-color);
+  text-decoration: none;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.footer-section a:hover {
+  color: var(--accent-color);
+}
+
+.footer-nav {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-nav li {
+  margin-bottom: 0.5rem;
+}
+
+.social-links a {
+  display: inline-block;
+  margin-right: 1rem;
+  color: var(--accent-color);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 1.5rem;
+  color: var(--text-secondary);
+}
+</style>

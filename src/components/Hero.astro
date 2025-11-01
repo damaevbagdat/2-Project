@@ -1,0 +1,96 @@
+---
+// src/components/Hero.astro
+import '../styles/global.css';
+import FadeIn from './FadeIn.astro';
+import { t, localizePath } from '../i18n/index';
+import { Image } from 'astro:assets';
+import lawyerImage from '../assets/images/lawyer-icon.svg';
+
+export interface Props { lang?: string }
+const { lang = 'ru' } = Astro.props;
+---
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-image">
+        <Image 
+          src={lawyerImage} 
+          alt={t('hero.imageAlt', lang) || "Professional lawyer"} 
+          width={300} 
+          height={225} 
+          loading="eager"
+          class="lawyer-icon"
+        />
+      </div>
+      <FadeIn tag="h1">{t('hero.title', lang)}</FadeIn>
+      <FadeIn class="hero-text">{t('hero.subtitle', lang)}</FadeIn>
+      <FadeIn>
+        <a href={localizePath('/contact', lang)} class="cta-button">{t('buttons.contact', lang)}</a>
+      </FadeIn>
+    </div>
+  </div>
+</section>
+
+<style>
+.hero {
+  padding: 4rem 0;
+  background: linear-gradient(135deg, var(--background-light-color) 0%, var(--background-color) 100%);
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.hero-image {
+  margin-bottom: 2rem;
+}
+
+.lawyer-icon {
+  max-width: 100%;
+  height: auto;
+}
+
+.hero h1 {
+  color: var(--primary-color);
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-text {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.cta-button {
+  display: inline-block;
+  background-color: var(--accent-color);
+  color: var(--text-light);
+  padding: 1rem 2rem;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #b8972d; /* немного темнее золотого */
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 2rem 0;
+  }
+  
+  .hero h1 {
+    font-size: 2rem;
+  }
+  
+  .hero-text {
+    font-size: 1rem;
+  }
+}
+</style>

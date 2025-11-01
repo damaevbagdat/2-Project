@@ -1,0 +1,290 @@
+---
+// src/components/Header.astro
+import '../styles/global.css';
+import { t, localizePath, LOCALES } from '../i18n/index';
+export interface Props {
+  lang?: string;
+}
+const { lang = 'ru' } = Astro.props;
+---
+
+<header class="header">
+  <div class="container">
+    <div class="header-content">
+      <div class="logo">
+        <h1>Halcyon</h1>
+      </div>
+      <nav class="nav">
+        <ul class="nav-list">
+          <li><a href={localizePath('/', lang)}>{t('nav.home', lang)}</a></li>
+          <li><a href={localizePath('/about', lang)}>{t('nav.about', lang)}</a></li>
+          <li><a href={localizePath('/services', lang)}>{t('nav.services', lang)}</a></li>
+          <li><a href={localizePath('/contact', lang)}>{t('nav.contact', lang)}</a></li>
+        </ul>
+      </nav>
+      <div class="language-switcher">
+        <select class="lang-select" id="lang-select" aria-label="Select language" value={lang}>
+          {LOCALES.map(l => (
+            <option value={l} selected={l===lang}>{l.toUpperCase()}</option>
+          ))}
+        </select>
+      </div>
+      <!-- Mobile menu button -->
+      <button class="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+        <span class="burger-line"></span>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile menu overlay -->
+  <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+    <button class="mobile-close" aria-label="Закрыть меню">×</button>
+    <ul class="mobile-nav-list">
+      <li><a href={localizePath('/', lang)}>{t('nav.home', lang)}</a></li>
+      <li><a href={localizePath('/about', lang)}>{t('nav.about', lang)}</a></li>
+      <li><a href={localizePath('/services', lang)}>{t('nav.services', lang)}</a></li>
+      <li><a href={localizePath('/contact', lang)}>{t('nav.contact', lang)}</a></li>
+    </ul>
+  </div>
+</header>
+
+<style>
+.header {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--background-light-color);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.logo h1 {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-list a:hover {
+  color: var(--accent-color);
+}
+
+.lang-select {
+  padding: 0.5rem;
+  border: 1px solid var(--primary-color);
+  border-radius: 4px;
+  background-color: var(--background-color);
+  color: var(--text-primary);
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .header-content {
+    /* Скрываем навигацию и переключатель языка на мобильных устройствах.
+       Показываем бургер и мобильное меню по клику. */
+    .nav, .language-switcher {
+      display: none;
+    }
+    .burger {
+      display: inline-flex;
+      background: transparent;
+      border: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+    }
+    .burger-line {
+      width: 22px;
+      height: 2px;
+      background: var(--text-primary);
+      display: block;
+    }
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: rgba(10, 18, 34, 0.95);
+      color: var(--text-light);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 2rem;
+      /* Slide-in from right */
+      transform: translateX(100%);
+      opacity: 0;
+      transition: transform 300ms ease, opacity 300ms ease;
+      pointer-events: none;
+    }
+    .mobile-menu.open {
+      transform: translateX(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .mobile-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: transparent;
+      border: none;
+      color: var(--text-light);
+      font-size: 2rem;
+      cursor: pointer;
+    }
+    .mobile-nav-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .mobile-nav-list a {
+      font-size: 1.25rem;
+      color: var(--text-light);
+      text-decoration: none;
+    }
+  }
+}
+</style>
+
+<script>
+  // Простая логика открытия/закрытия мобильного меню
+  (function () {
+    const burger = document.querySelector('.burger');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const closeBtn = document.querySelector('.mobile-close');
+    const mainContent = document.querySelector('main');
+    let focusable = [];
+    let firstFocusable = null;
+    let lastFocusable = null;
+    let onKeyDown;
+
+    if (!burger || !mobileMenu) return;
+
+    function updateFocusable() {
+      const selectors = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+      focusable = Array.from(mobileMenu.querySelectorAll(selectors)).filter((el) => el.offsetParent !== null);
+      firstFocusable = focusable[0] || closeBtn;
+      lastFocusable = focusable[focusable.length - 1] || closeBtn;
+    }
+
+    function openMenu() {
+      mobileMenu.classList.add('open');
+      mobileMenu.setAttribute('aria-hidden', 'false');
+      burger.setAttribute('aria-expanded', 'true');
+      // lock scroll
+      document.documentElement.style.overflow = 'hidden';
+      if (mainContent) mainContent.setAttribute('aria-hidden', 'true');
+      updateFocusable();
+      // focus first focusable
+      (firstFocusable || closeBtn).focus();
+
+      onKeyDown = function (e) {
+        if (e.key === 'Tab') {
+          if (focusable.length === 0) {
+            e.preventDefault();
+            (closeBtn).focus();
+            return;
+          }
+          if (e.shiftKey) {
+            if (document.activeElement === firstFocusable) {
+              e.preventDefault();
+              lastFocusable.focus();
+            }
+          } else {
+            if (document.activeElement === lastFocusable) {
+              e.preventDefault();
+              firstFocusable.focus();
+            }
+          }
+        } else if (e.key === 'Escape') {
+          closeMenu();
+        }
+      };
+
+      document.addEventListener('keydown', onKeyDown);
+    }
+
+    function closeMenu() {
+      mobileMenu.classList.remove('open');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      burger.setAttribute('aria-expanded', 'false');
+      document.documentElement.style.overflow = '';
+      if (mainContent) mainContent.removeAttribute('aria-hidden');
+      burger.focus();
+      if (onKeyDown) document.removeEventListener('keydown', onKeyDown);
+    }
+
+    burger.addEventListener('click', () => {
+      const expanded = burger.getAttribute('aria-expanded') === 'true';
+      if (expanded) closeMenu(); else openMenu();
+    });
+
+    if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+
+    // Close if click outside menu content
+    mobileMenu.addEventListener('click', (e) => {
+      if (e.target === mobileMenu) closeMenu();
+    });
+  })();
+</script>
+
+<script>
+  // Robust client-side language switcher: preserves pathname, search and hash.
+  (function () {
+    const select = document.getElementById('lang-select');
+    if (!select) return;
+
+    function stripLocaleFromPath(pathname) {
+      const parts = pathname.split('/').filter(Boolean);
+      if (parts.length && ['kz','ru','en'].includes(parts[0])) return '/' + parts.slice(1).join('/');
+      return pathname;
+    }
+
+    function localizePath(pathname, locale) {
+      // pathname may include search/hash; separate them
+      let url = document.createElement('a');
+      url.href = pathname;
+      const basePath = stripLocaleFromPath(url.pathname) === '/' ? '' : stripLocaleFromPath(url.pathname);
+      const newPath = `/${locale}${basePath}`.replace(/\/\/$/, '') || `/${locale}`;
+      return newPath + (url.search || '') + (url.hash || '');
+    }
+
+    // Initialize select to current locale if not already set
+    try {
+      const currentParts = location.pathname.split('/').filter(Boolean);
+      if (currentParts.length && ['kz','ru','en'].includes(currentParts[0])) {
+        select.value = currentParts[0];
+      }
+    } catch (e) {
+      // ignore
+    }
+
+    select.addEventListener('change', (e) => {
+      const locale = e.target.value;
+      const newUrl = localizePath(location.pathname + location.search + location.hash, locale);
+      // Use location.assign to keep history behavior
+      location.assign(newUrl);
+    });
+  })();
+</script>

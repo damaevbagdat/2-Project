@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const locale = Astro.params.lang;
+
+export async function getStaticPaths() {
+  const locales = ['ru', 'kz', 'en'];
+  return locales.map(l => ({ params: { lang: l } }));
+}
+
+// Get all pages in the 'pages' collection
+const pages = await getCollection('pages');
+// Find the about page for the current locale
+let entry = pages.find(page => 
+  page.id.startsWith('about-') && 
+  page.data.locale === locale
+);
+// If no locale-specific page is found, fall back to Russian version
+if (!entry) {
+  entry = pages.find(page => 
+    page.id.startsWith('about-') && 
+    page.data.locale === 'ru'
+  );
+}
+
+let Content = null;
+let pageData = null;
+
+if (entry) {
+  const rendered = await entry.render();
+  Content = rendered.Content;
+  pageData = entry.data;
+}
+
+// Use content data for SEO if available, fallback to defaults
+const title = pageData?.title || 'О компании';
+const description = pageData?.description || 'Halcyon - ведущая юридическая фирма в Казахстане, специализирующаяся на корпоративном праве, судебных спорах и комплаенсе.';
+---
+
+<BaseLayout lang={locale} title={title} description={description}>
+  <div class="container">
+    <article class="about-page">
+      <h1>{title}</h1>
+      <div class="content">
+        <Content />
+      </div>
+    </article>
+  </div>
+</BaseLayout>

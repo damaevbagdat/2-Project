@@ -1,0 +1,96 @@
+---
+// src/pages/services/index.astro
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Получаем все услуги, которые не являются черновиками, и сортируем их
+const publishedServices = (await getCollection('services', ({ data }) => {
+  return data.draft !== true;
+})).sort((a, b) => (a.data.order ?? 0) - (b.data.order ?? 0));
+---
+
+<BaseLayout>
+  <div class="container">
+    <section class="services-list">
+      <h1>Наши услуги</h1>
+      <p class="services-intro">Мы предлагаем широкий спектр юридических услуг для физических и юридических лиц</p>
+      <div class="services-grid">
+        {publishedServices.map(service => (
+          <a href={`/services/${service.slug}`} class="service-card" key={service.slug}>
+            <h2>{service.data.title}</h2>
+            <p>{service.data.description}</p>
+            <span class="service-category">{service.data.category}</span>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .services-list {
+    padding: 2rem 0;
+  }
+
+  .services-list h1 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+
+  .services-intro {
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    font-size: 1.2rem;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .service-card {
+    display: block;
+    background-color: var(--background-color);
+    border: 1px solid var(--background-light-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: var(--text-primary);
+  }
+
+  .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .service-card h2 {
+    color: var(--primary-color);
+    margin: 0 0 1rem 0;
+  }
+
+  .service-card p {
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    line-height: 1.6;
+  }
+
+  .service-category {
+    display: inline-block;
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 768px) {
+    .services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

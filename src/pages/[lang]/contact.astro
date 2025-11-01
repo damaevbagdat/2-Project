@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const locale = Astro.params.lang;
+export async function getStaticPaths() {
+  const locales = ['ru', 'kz', 'en'];
+  return locales.map(l => ({ params: { lang: l } }));
+}
+
+const { getCollection } = await import('astro:content');
+let Content = null;
+let pageData = null;
+const pages = await getCollection('pages');
+let entry = pages.find(p => (p.data?.locale ?? '') === locale && /contact/i.test(p.id));
+if (!entry) entry = pages.find(p => /contact/i.test(p.id));
+if (entry) {
+  const rendered = await entry.render();
+  Content = rendered.Content;
+  pageData = entry.data;
+}
+
+// Use content data for SEO if available, fallback to defaults
+const title = pageData?.title || 'Контакты';
+const description = pageData?.description || 'Свяжитесь с нами - Halcyon, юридическая фирма премиум-класса в Казахстане. Наши контакты, адрес и информация для связи.';
+---
+
+<BaseLayout lang={locale} title={title} description={description}>
+  <div class="container">
+    <article class="contact-page">
+      <div class="contact-info">
+        <Content />
+      </div>
+    </article>
+  </div>
+</BaseLayout>

@@ -1,0 +1,43 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact"
+  },
+  "buttons": {
+    "contact": "Get consultation",
+    "send": "Send"
+  },
+  "headings": {
+    "services": "Our services"
+  },
+  "footer": {
+    "tagline": "Premium law firm in Kazakhstan",
+    "contact": "Contact",
+    "address": "Nur-Sultan, st. XXX, bld. XX",
+    "social": "Social",
+    "nav": "Navigation",
+    "copyright": "All rights reserved."
+  },
+  "hero": {
+    "title": "Proactive legal support for your business",
+    "subtitle": "We don't just solve problems — we prevent them. Modern legal solutions in the digital world for premium companies.",
+    "imageAlt": "Professional lawyer - business consultation"
+  },
+  "advantages": {
+    "title": "Our advantages",
+    "card1": {
+      "title": "Proactive approach",
+      "description": "We don't just solve problems, we prevent them"
+    },
+    "card2": {
+      "title": "Digital literacy",
+      "description": "Experts in IT law and data protection"
+    },
+    "card3": {
+      "title": "Full transparency",
+      "description": "Clear terms at every stage"
+    }
+  }
+}

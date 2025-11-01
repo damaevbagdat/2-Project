@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import Advantages from '../../components/Advantages.astro';
+
+const locale = Astro.params.lang;
+
+export async function getStaticPaths() {
+  const locales = ['ru', 'kz', 'en'];
+  return locales.map(l => ({ params: { lang: l } }));
+}
+
+// Define localized titles and descriptions
+const localizedContent = {
+  ru: {
+    title: 'Halcyon - Юридическая фирма премиум-класса',
+    description: 'Halcyon - ведущая юридическая фирма в Казахстане, специализирующаяся на корпоративном праве, судебных спорах и комплаенсе.'
+  },
+  en: {
+    title: 'Halcyon - Premium Legal Firm',
+    description: 'Halcyon - leading legal firm in Kazakhstan specializing in corporate law, litigation, and compliance.'
+  },
+  kz: {
+    title: 'Halcyon - Сын кластағы заңдық компания',
+    description: 'Halcyon - Қазақстандағы жетекші заңдық компания, корпоративтік құқық, сот тәжірибесі және сәйкестік бойынша маманданған.'
+  }
+};
+
+const content = localizedContent[locale] || localizedContent.ru;
+---
+
+<BaseLayout lang={locale} title={content.title} description={content.description}>
+  <Hero lang={locale} />
+  <Advantages lang={locale} />
+</BaseLayout>

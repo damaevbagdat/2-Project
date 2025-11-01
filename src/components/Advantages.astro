@@ -1,0 +1,81 @@
+---
+// src/components/Advantages.astro
+import '../styles/global.css';
+import FadeIn from './FadeIn.astro';
+import { t } from '../i18n/index';
+export interface Props { lang?: string }
+const { lang = 'ru' } = Astro.props;
+---
+
+<section class="advantages">
+  <div class="container">
+    <FadeIn tag="h2">{t('advantages.title', lang)}</FadeIn>
+    <div class="advantages-grid">
+      <FadeIn class="advantage-card">
+        <h3>{t('advantages.card1.title', lang)}</h3>
+        <p>{t('advantages.card1.description', lang)}</p>
+      </FadeIn>
+      <FadeIn class="advantage-card">
+        <h3>{t('advantages.card2.title', lang)}</h3>
+        <p>{t('advantages.card2.description', lang)}</p>
+      </FadeIn>
+      <FadeIn class="advantage-card">
+        <h3>{t('advantages.card3.title', lang)}</h3>
+        <p>{t('advantages.card3.description', lang)}</p>
+      </FadeIn>
+    </div>
+  </div>
+</section>
+
+<style>
+.advantages {
+  padding: 4rem 0;
+  background-color: var(--background-color);
+}
+
+.advantages h2 {
+  text-align: center;
+  color: var(--primary-color);
+  margin-bottom: 3rem;
+  font-size: 2rem;
+}
+
+.advantages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.advantage-card {
+  background: var(--background-color);
+  border: 1px solid var(--background-light-color);
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.advantage-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.advantage-card h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+}
+
+.advantage-card p {
+  color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+  .advantages {
+    padding: 2rem 0;
+  }
+  
+  .advantages h2 {
+    font-size: 1.5rem;
+  }
+}
+</style>

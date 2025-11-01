@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const locale = Astro.params.lang;
+const slug = Astro.params.slug;
+
+export async function getStaticPaths() {
+  const locales = ['ru', 'kz', 'en'];
+  const all = await getCollection('services');
+  // Get all unique slugs for each locale
+  const paths = [];
+  for (const l of locales) {
+    const localeServices = all.filter(s => s.data.locale === l);
+    const slugs = Array.from(new Set(localeServices.map(s => s.slug)));
+    for (const s of slugs) {
+      paths.push({ params: { lang: l, slug: s } });
+    }
+  }
+  return paths;
+}
+
+// Get all services for the current locale
+const allServices = await getCollection('services');
+const localeServices = allServices.filter(s => s.data.locale === locale);
+let service = localeServices.find(s => s.slug === slug);
+
+let serviceFound = true;
+let Content = null;
+if (!service) {
+  serviceFound = false;
+} else {
+  // Render markdown content to a Content component
+  const rendered = await service.render();
+  Content = rendered.Content;
+}
+
+// Define localized titles
+const localizedNotFound = {
+  ru: { title: '404 — не найдено', message: `Услуга с ключом "${slug}" не найдена для локали "${locale}".` },
+  kz: { title: '404 — табылмады', message: `"${locale}" тілі үшін "${slug}" кілті бар қызмет табылмады.` },
+  en: { title: '404 — not found', message: `Service with key "${slug}" not found for locale "${locale}".` }
+};
+const notFoundContent = localizedNotFound[locale] || localizedNotFound.ru;
+
+// Set SEO data if service is found
+let title = notFoundContent.title;
+let description = `Страница не найдена для услуги "${slug}" - Halcyon Юридическая фирма`;
+if (serviceFound && service) {
+  title = `${service.data.title} - Halcyon Юридическая фирма`;
+  description = service.data.description || `Услуга "${service.data.title}" от Halcyon, ведущей юридической фирмы в Казахстане.`;
+}
+---
+
+<BaseLayout lang={locale} title={title} description={description}>
+  <div class="container">
+    {serviceFound ? (
+      <article class="service-detail">
+        <header>
+          <h1>{service.data.title}</h1>
+          {service.data.description && <p class="lead">{service.data.description}</p>}
+        </header>
+
+        <section class="service-body">
+          <Content />
+        </section>
+      </article>
+    ) : (
+      <section class="not-found">
+        <h1>{notFoundContent.title}</h1>
+        <p>{notFoundContent.message}</p>
+      </section>
+    )}
+  </div>
+</BaseLayout>

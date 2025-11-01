@@ -1,0 +1,51 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { t } from '../../../i18n';
+
+const locale = Astro.params.lang;
+
+export async function getStaticPaths() {
+  const locales = ['ru', 'kz', 'en'];
+  return locales.map(l => ({ params: { lang: l } }));
+}
+
+// Get all services for the current locale
+const allServices = await getCollection('services');
+const localeServices = allServices.filter(s => s.data.locale === locale);
+const publishedServices = localeServices.filter(s => !s.data.draft).sort((a,b) => (a.data.order??0)-(b.data.order??0));
+
+// Define localized titles and descriptions
+const localizedContent = {
+  ru: {
+    title: 'Наши услуги - Halcyon Юридическая фирма',
+    description: 'Широкий спектр юридических услуг от ведущей юридической фирмы в Казахстане. Корпоративное право, судебная практика и другие услуги.'
+  },
+  en: {
+    title: 'Our Services - Halcyon Legal Firm',
+    description: 'A comprehensive range of legal services from the leading law firm in Kazakhstan. Corporate law, litigation, and more.'
+  },
+  kz: {
+    title: 'Қызметтеріміз - Halcyon Заңдық компания',
+    description: 'Қазақстанның жетекші заңдық компаниясының кең ауқымды заңдық қызметтері. Корпоративтік құқық, сот тәжірибесі және басқалар.'
+  }
+};
+
+const content = localizedContent[locale] || localizedContent.ru;
+---
+
+<BaseLayout lang={locale} title={content.title} description={content.description}>
+  <div class="container">
+    <section class="services-list">
+      <h1>{t('services.pageTitle', locale)}</h1>
+      <div class="services-grid">
+        {publishedServices.map(service => (
+          <a href={`/${locale}/services/${service.slug}`} class="service-card" key={service.slug}>
+            <h2>{service.data.title}</h2>
+            <p>{service.data.description}</p>
+          </a>
+        ))}
+      </div>
+    </section>
+  </div>
+</BaseLayout>
