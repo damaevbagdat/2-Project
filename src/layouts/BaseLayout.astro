@@ -7,8 +7,8 @@ export interface Props {
 }
 const { 
 	lang = 'ru', 
-	title = 'Halcyon - Юридическая фирма премиум-класса', 
-	description = 'Halcyon - ведущая юридическая фирма в Казахстане, специализирующаяся на корпоративном праве, судебных спорах и комплаенсе.' 
+	title = 'Alash-Zan - Юридическая фирма премиум-класса', 
+	description = 'Alash-Zan - ведущая юридическая фирма в Казахстане, специализирующаяся на корпоративном праве, судебных спорах и комплаенсе.' 
 } = Astro.props;
 import '../styles/global.css';
 import Header from '../components/Header.astro';
@@ -17,9 +17,9 @@ import { generateHreflangs } from '../i18n/index';
 
 // Define localized site names
 const localizedSiteNames = {
-  ru: 'Halcyon - Юридическая фирма премиум-класса',
-  en: 'Halcyon - Premium Legal Firm',
-  kz: 'Halcyon - Сын кластағы заңдық компания'
+  ru: 'Alash-Zan - Юридическая фирма премиум-класса',
+  en: 'Alash-Zan - Premium Legal Firm',
+  kz: 'Alash-Zan - Сын кластағы заңдық компания'
 };
 
 const siteName = localizedSiteNames[lang] || localizedSiteNames.ru;

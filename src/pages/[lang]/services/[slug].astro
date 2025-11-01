@@ -45,10 +45,10 @@ const notFoundContent = localizedNotFound[locale] || localizedNotFound.ru;
 
 // Set SEO data if service is found
 let title = notFoundContent.title;
-let description = `Страница не найдена для услуги "${slug}" - Halcyon Юридическая фирма`;
+let description = `Страница не найдена для услуги "${slug}" - Alash-Zan Юридическая фирма`;
 if (serviceFound && service) {
-  title = `${service.data.title} - Halcyon Юридическая фирма`;
-  description = service.data.description || `Услуга "${service.data.title}" от Halcyon, ведущей юридической фирмы в Казахстане.`;
+  title = `${service.data.title} - Alash-Zan Юридическая фирма`;
+  description = service.data.description || `Услуга "${service.data.title}" от Alash-Zan, ведущей юридической фирмы в Казахстане.`;
 }
 ---
 
