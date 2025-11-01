@@ -1,8 +1,4 @@
 ---
-import { redirect } from 'astro:middleware';
-
 // Redirect the src/pages/contact page to the default language version (Russian)
-export async function get() {
-  return redirect('/ru/contact', 301);
-}
+return Astro.redirect('/ru/contact', 301);
 ---
