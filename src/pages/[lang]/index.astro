@@ -2,6 +2,8 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
 import DivorceSection from '../../components/DivorceSection.astro';
+import PretensionSection from '../../components/PretensionSection.astro';
+import BusinessSection from '../../components/BusinessSection.astro';
 import AdvantagesSection from '../../components/AdvantagesSection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 
@@ -16,15 +18,15 @@ export async function getStaticPaths() {
 const localizedContent = {
   ru: {
     title: 'Halcyon | Юридические услуги премиум-класса в Казахстане',
-    description: 'Halcyon - юридическая помощь премиум-класса в Казахстане. Расторжение брака под ключ, взыскание алиментов, определение графика общения с ребенком. Полная конфиденциальность и профессиональный подход.'
+    description: 'Halcyon - юридическая помощь премиум-класса в Казахстане. Расторжение брака, претензионно-исковая работа, юрист для бизнеса. Полная конфиденциальность и профессиональный подход.'
   },
   en: {
     title: 'Halcyon | Premium Legal Services in Kazakhstan',
-    description: 'Halcyon - premium legal services in Kazakhstan. Turnkey divorce, alimony collection, child visitation schedule determination. Complete confidentiality and professional approach.'
+    description: 'Halcyon - premium legal services in Kazakhstan. Divorce services, pre-trial and litigation work, business legal support. Complete confidentiality and professional approach.'
   },
   kz: {
     title: 'Halcyon | Қазақстанда премиум-класс заңгерлік қызметтер',
-    description: 'Halcyon - Қазақстанда премиум-класс заңгерлік көмек. Некені кілт астында бұзу, алименттерді өндіріп алу, баламен қарым-қатынас кестесін анықтау. Толық құпиялылық және кәсіби көзқарас.'
+    description: 'Halcyon - Қазақстанда премиум-класс заңгерлік көмек. Некені бұзу, сотқа дейінгі және сот жұмысы, бизнес үшін заңгер. Толық құпиялылық және кәсіби көзқарас.'
   }
 };
 
@@ -34,6 +36,8 @@ const content = localizedContent[locale] || localizedContent.ru;
 <BaseLayout lang={locale} title={content.title} description={content.description}>
   <Hero lang={locale} />
   <DivorceSection lang={locale} />
+  <PretensionSection lang={locale} />
+  <BusinessSection lang={locale} />
   <AdvantagesSection lang={locale} />
   <ContactSection lang={locale} />
 </BaseLayout>

@@ -4,7 +4,9 @@
     "about": "About",
     "services": "Services",
     "contact": "Contact",
-    "divorce": "Divorce Services"
+    "divorce": "Divorce Services",
+    "pretension": "Claims and Litigation",
+    "business": "Legal Counsel for Business"
   },
   "buttons": {
     "contact": "Get consultation",
@@ -32,6 +34,11 @@
     "divorceTitleAccent": "Divorce",
     "divorceSubtitle": "turnkey",
     "divorceDesc": "Turnkey divorce and dissolution of marriage — without your personal participation, presence, or even the consent of the second spouse. We will help you protect your interests at all stages of the process.",
+    "pretensionTitle": "Claims and Litigation",
+    "pretensionDescription": "If you are facing unfulfilled obligations — unpaid debt, contract breach, or substandard service — we will help restore justice. We handle everything from pre-trial settlement to full court representation.",
+    "businessHighlight": "Your Pocket Lawyer",
+    "businessTitle": "for business",
+    "businessDescription": "Your personal lawyer on retainer — always available and ready to promptly resolve any legal matter for your company. You don't need to maintain in-house counsel; we provide the full spectrum of services and cost optimization.",
     "advantagesTitle": "Our advantages",
     "contactTitle": "Contact Me"
   },
@@ -59,6 +66,54 @@
     "service6": {
       "title": "Determining child visitation schedule",
       "desc": "For parents who want to establish a clear order of meetings with the child. We will help develop a convenient and fair schedule that meets the interests of the child and achieve official dissolution of rights without delays."
+    }
+  },
+  "pretension": {
+    "service1": {
+      "title": "Pre-trial Settlement",
+      "description": "We draft and send a pre-trial claim to the opposing party with a clear description of violations, demands, and deadline for compliance. This often allows resolving the dispute amicably, without court proceedings and unnecessary expenses."
+    },
+    "service2": {
+      "title": "Evidence Base Formation",
+      "description": "We thoroughly analyze the situation, collect and systematize documents, expert opinions, testimonies, and other evidence."
+    },
+    "service3": {
+      "title": "Court Representation",
+      "description": "If the dispute cannot be settled amicably, we prepare the statement of claim, file it with the court, and fully represent your interests at hearings."
+    },
+    "service4": {
+      "title": "Working with Any Opponents",
+      "description": "We handle cases not only with companies and private individuals, but also with government agencies."
+    }
+  },
+  "business": {
+    "service1": {
+      "title": "Contract Analysis",
+      "description": "We analyze every clause of the contract: review terms, legal consequences, and potential legal risks. Such analysis allows you to minimize risks and avoid future conflicts."
+    },
+    "service2": {
+      "title": "Contract Development and Support",
+      "description": "We create new contracts for specific tasks of your business: supply, lease, contracting, service provision, etc. If the partner's terms don't align with your interests, we will draft a protocol of disagreements and ensure amendments are made."
+    },
+    "service3": {
+      "title": "Counterparty Verification",
+      "description": "Before entering into a transaction, it's important to know who you're dealing with. We verify counterparties for debts, litigation, registry entries, and other factors that may affect cooperation."
+    },
+    "service4": {
+      "title": "Preparation of Official Letters and Responses",
+      "description": "We prepare legally competent letters, inquiries, and responses for negotiations with partners, clients, government, or state agencies. Such business correspondence helps effectively protect your interests."
+    },
+    "service5": {
+      "title": "Working with Government Agencies",
+      "description": "If your business faces an inspection or dispute, we take control of the process. We participate in negotiations with various agencies, prepare objections and complaints, and appeal unlawful actions or decisions."
+    },
+    "service6": {
+      "title": "Trademark Registration and Intellectual Property Protection",
+      "description": "We help register trademarks, patents, and other intellectual property objects, so that no one can unlawfully use your development or brand."
+    },
+    "service7": {
+      "title": "Comprehensive Legal Business Support",
+      "description": "We are always by your side — from documentation on current issues to supporting large-scale projects. Regardless of the situation, you receive a complete solution, risk reduction, and optimization for business development."
     }
   },
   "advantages": {

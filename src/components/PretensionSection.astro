@@ -1,0 +1,97 @@
+---
+import ServiceCardAccordion from './ServiceCardAccordion.astro';
+import { t } from '../i18n/index';
+
+export interface Props {
+  lang?: string;
+}
+
+const { lang = 'ru' } = Astro.props;
+---
+
+<section id="pretension" class="pretension-section">
+  <div class="container">
+    <h2 class="section-title">
+      {t('sections.pretensionTitle', lang)}
+    </h2>
+    <p class="section-description">{t('sections.pretensionDescription', lang)}</p>
+
+    <div class="services-grid">
+      <ServiceCardAccordion title={t('pretension.service1.title', lang)}>
+        <p>{t('pretension.service1.description', lang)}</p>
+      </ServiceCardAccordion>
+
+      <ServiceCardAccordion title={t('pretension.service2.title', lang)}>
+        <p>{t('pretension.service2.description', lang)}</p>
+      </ServiceCardAccordion>
+
+      <ServiceCardAccordion title={t('pretension.service3.title', lang)}>
+        <p>{t('pretension.service3.description', lang)}</p>
+      </ServiceCardAccordion>
+
+      <ServiceCardAccordion title={t('pretension.service4.title', lang)}>
+        <p>{t('pretension.service4.description', lang)}</p>
+      </ServiceCardAccordion>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pretension-section {
+    padding: 8rem 5%;
+    background: var(--gradient-bg);
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .section-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .section-description {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 5rem;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-muted);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 768px) {
+    .pretension-section {
+      padding: 4rem 5%;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .section-description {
+      font-size: 1rem;
+      margin-bottom: 3rem;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>
