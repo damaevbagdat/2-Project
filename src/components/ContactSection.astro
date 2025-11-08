@@ -250,19 +250,50 @@ const { lang = 'ru' } = Astro.props;
 </style>
 
 <script>
-  // Form submission handler
-  const form = document.getElementById('contact-form');
+  const form = document.getElementById('contact-form') as HTMLFormElement;
   if (form) {
-    form.addEventListener('submit', (e) => {
+    form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const lang = document.documentElement.lang || 'ru';
-      const messages = {
-        ru: 'Спасибо! Ваше сообщение отправлено.',
-        kz: 'Рахмет! Хабарламаңыз жіберілді.',
-        en: 'Thank you! Your message has been sent.'
+      const formData = new FormData(form);
+      const data = {
+        name: formData.get('name'),
+        phone: formData.get('phone'),
+        message: formData.get('message'),
+        email: 'noreply@alash-zan.kz',
+        consent: true
       };
-      alert(messages[lang] || messages.ru);
-      form.reset();
+
+      const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const originalText = button.textContent;
+      button.disabled = true;
+      button.textContent = lang === 'ru' ? 'Отправка...' : lang === 'kz' ? 'Жіберілуде...' : 'Sending...';
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+
+        const messages = {
+          ru: 'Спасибо! Ваше сообщение отправлено.',
+          kz: 'Рахмет! Хабарламаңыз жіберілді.',
+          en: 'Thank you! Your message has been sent.'
+        };
+
+        if (response.ok) {
+          alert(messages[lang] || messages.ru);
+          form.reset();
+        } else {
+          alert('Ошибка отправки. Попробуйте позже.');
+        }
+      } catch (error) {
+        alert('Ошибка отправки. Попробуйте позже.');
+      } finally {
+        button.disabled = false;
+        button.textContent = originalText;
+      }
     });
   }
 </script>
