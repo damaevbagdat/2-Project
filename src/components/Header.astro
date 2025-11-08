@@ -173,6 +173,11 @@ const { lang = 'ru' } = Astro.props;
   display: block;
 }
 
+/* Hide mobile menu by default on desktop */
+.mobile-menu {
+  display: none;
+}
+
 @media (max-width: 1024px) {
   .nav,
   .language-switcher {
@@ -189,6 +194,7 @@ const { lang = 'ru' } = Astro.props;
   }
 
   .mobile-menu {
+    display: flex;
     position: fixed;
     top: 0;
     right: 0;
@@ -197,7 +203,6 @@ const { lang = 'ru' } = Astro.props;
     background: rgba(26, 26, 46, 0.98);
     backdrop-filter: blur(10px);
     color: var(--text);
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;

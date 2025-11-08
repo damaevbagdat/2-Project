@@ -49,6 +49,9 @@
             "kz",
             "en"
           ]
+        },
+        "$schema": {
+          "type": "string"
         }
       },
       "required": [
