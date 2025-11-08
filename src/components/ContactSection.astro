@@ -1,0 +1,268 @@
+---
+// src/components/ContactSection.astro
+import '../styles/global.css';
+import { t } from '../i18n/index';
+
+export interface Props { lang?: string }
+const { lang = 'ru' } = Astro.props;
+---
+
+<section class="contact-section" id="contact">
+  <div class="container">
+    <h2 class="section-title">{t('sections.contactTitle', lang)}</h2>
+    <div class="contact-container">
+      <div class="contact-info">
+        <h2 class="contact-subtitle">{t('contact.subtitle', lang)}</h2>
+        <p class="contact-desc">{t('contact.desc', lang)}</p>
+        <div class="social-links">
+          <a href="https://wa.me/77079970411" class="social-link" target="_blank" rel="noopener noreferrer">
+            <span class="social-icon">📱</span>
+            <div>
+              <strong>WhatsApp</strong>
+              <p>{t('contact.whatsappDesc', lang)}</p>
+            </div>
+          </a>
+          <a href="https://t.me/halci" class="social-link" target="_blank" rel="noopener noreferrer">
+            <span class="social-icon">✈️</span>
+            <div>
+              <strong>Telegram</strong>
+              <p>{t('contact.telegramDesc', lang)}</p>
+            </div>
+          </a>
+          <a href="https://instagram.com/alash_lawyer" class="social-link" target="_blank" rel="noopener noreferrer">
+            <span class="social-icon">📸</span>
+            <div>
+              <strong>Instagram</strong>
+              <p>{t('contact.instagramDesc', lang)}</p>
+            </div>
+          </a>
+          <a href="tel:+77079970411" class="social-link">
+            <span class="social-icon">📞</span>
+            <div>
+              <strong>+7 (707) 997-04-11</strong>
+              <p>{t('contact.phoneDesc', lang)}</p>
+            </div>
+          </a>
+        </div>
+      </div>
+      <div class="contact-form-wrapper">
+        <h3 class="form-title">{t('contact.formTitle', lang)}</h3>
+        <form class="contact-form" id="contact-form">
+          <div class="form-group">
+            <label>{t('contact.formLabelName', lang)}</label>
+            <input type="text" name="name" required />
+          </div>
+          <div class="form-group">
+            <label>{t('contact.formLabelPhone', lang)}</label>
+            <input type="tel" name="phone" required />
+          </div>
+          <div class="form-group">
+            <label>{t('contact.formLabelMessage', lang)}</label>
+            <textarea name="message" required></textarea>
+          </div>
+          <button type="submit" class="cta-button form-submit">{t('contact.formSubmit', lang)}</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+.contact-section {
+  padding: 8rem 5%;
+  background: linear-gradient(180deg, var(--secondary), var(--primary));
+}
+
+.section-title {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 4rem;
+  color: var(--accent);
+}
+
+.contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+}
+
+.contact-info h2 {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 2rem;
+}
+
+.contact-info p {
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+}
+
+.social-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  text-decoration: none;
+  color: var(--text);
+  border: 1px solid rgba(201, 169, 97, 0.2);
+  transition: all 0.3s ease;
+}
+
+.social-link:hover {
+  background: rgba(201, 169, 97, 0.1);
+  border-color: var(--accent);
+  transform: translateX(10px);
+}
+
+.social-icon {
+  font-size: 2rem;
+  width: 50px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.social-link strong {
+  display: block;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+}
+
+.social-link p {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.contact-form-wrapper {
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  padding: 3rem;
+  border-radius: 20px;
+  border: 1px solid rgba(201, 169, 97, 0.2);
+}
+
+.form-title {
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 0.5rem;
+  color: var(--accent-light);
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(201, 169, 97, 0.2);
+  border-radius: 10px;
+  color: var(--text);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.form-submit {
+  width: 100%;
+  background: var(--gradient-accent);
+  color: var(--primary);
+  padding: 1.2rem 3rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 30px rgba(201, 169, 97, 0.3);
+}
+
+.form-submit:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(201, 169, 97, 0.5);
+}
+
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 4rem 1rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .contact-info h2 {
+    font-size: 2rem;
+  }
+
+  .contact-form-wrapper {
+    padding: 2rem;
+  }
+
+  .form-title {
+    font-size: 1.5rem;
+  }
+}
+</style>
+
+<script>
+  // Form submission handler
+  const form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const lang = document.documentElement.lang || 'ru';
+      const messages = {
+        ru: 'Спасибо! Ваше сообщение отправлено.',
+        kz: 'Рахмет! Хабарламаңыз жіберілді.',
+        en: 'Thank you! Your message has been sent.'
+      };
+      alert(messages[lang] || messages.ru);
+      form.reset();
+    });
+  }
+</script>

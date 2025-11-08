@@ -1,24 +1,35 @@
 :root {
-  /* Основные цвета */
-  --primary-color: #0a2342; /* глубокий синий */
-  --primary-alt-color: #2d3748; /* темно-серый */
+  /* Halcyon Dark Theme */
+  /* Основные цвета фона */
+  --primary: #1a1a2e; /* темный фон */
+  --secondary: #16213e; /* вторичный темный */
 
   /* Акцентные цвета */
-  --accent-color: #d4af37; /* золотой */
-  --accent-alt-color: #4fd1c5; /* бирюзовый */
-
-  /* Цвета фона */
-  --background-color: #ffffff; /* белый */
-  --background-light-color: #f7fafc; /* светло-серый */
+  --accent: #c9a961; /* золотой */
+  --accent-light: #e8d4a0; /* светлое золото */
 
   /* Цвета текста */
-  --text-primary: #2d3748; /* темный текст */
-  --text-secondary: #718096; /* серый текст */
-  --text-light: #ffffff; /* светлый текст */
+  --text: #ffffff; /* белый текст */
+  --text-muted: #a0a0a0; /* приглушенный текст */
+
+  /* Прозрачные элементы */
+  --bg-card: rgba(255, 255, 255, 0.05); /* карточки */
+  --bg-card-hover: rgba(255, 255, 255, 0.08);
+
+  /* Градиенты */
+  --gradient-accent: linear-gradient(135deg, var(--accent), var(--accent-light));
+  --gradient-bg: linear-gradient(180deg, var(--primary), var(--secondary));
+
+  /* Deprecated (для обратной совместимости) */
+  --primary-color: var(--primary);
+  --accent-color: var(--accent);
+  --background-color: var(--primary);
+  --text-primary: var(--text);
+  --text-secondary: var(--text-muted);
 
   /* Шрифты */
-  --font-primary: 'Montserrat', 'Lato', 'Helvetica', 'Arial', sans-serif;
-  --font-secondary: 'Raleway', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  --font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --font-secondary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* Основные стили */
@@ -30,9 +41,10 @@
 
 body {
   font-family: var(--font-primary);
-  color: var(--text-primary);
-  background-color: var(--background-color);
+  color: var(--text);
+  background: var(--primary);
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 /* Иерархия заголовков */

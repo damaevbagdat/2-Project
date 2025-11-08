@@ -8,26 +8,26 @@ export interface Props {
 const { lang = 'ru' } = Astro.props;
 ---
 
-<header class="header">
+<header class="header" id="navbar">
   <div class="container">
     <div class="header-content">
-      <div class="logo">
-        <h1>Alash-Zan</h1>
-      </div>
+      <a href={localizePath('/', lang)} class="logo">HALCYON</a>
       <nav class="nav">
         <ul class="nav-list">
-          <li><a href={localizePath('/', lang)}>{t('nav.home', lang)}</a></li>
-          <li><a href={localizePath('/about', lang)}>{t('nav.about', lang)}</a></li>
-          <li><a href={localizePath('/services', lang)}>{t('nav.services', lang)}</a></li>
-          <li><a href={localizePath('/contact', lang)}>{t('nav.contact', lang)}</a></li>
+          <li><a href="#divorce">{t('nav.divorce', lang)}</a></li>
+          <li><a href="#contact">{t('nav.contact', lang)}</a></li>
         </ul>
       </nav>
       <div class="language-switcher">
-        <select class="lang-select" id="lang-select" aria-label="Select language" value={lang}>
-          {LOCALES.map(l => (
-            <option value={l} selected={l===lang}>{l.toUpperCase()}</option>
-          ))}
-        </select>
+        {LOCALES.map(l => (
+          <button
+            class={`lang-btn ${l === lang ? 'active' : ''}`}
+            data-lang={l}
+            aria-label={`Switch to ${l.toUpperCase()}`}
+          >
+            {l === 'kz' ? 'ҚАЗ' : l === 'ru' ? 'РУС' : 'ENG'}
+          </button>
+        ))}
       </div>
       <!-- Mobile menu button -->
       <button class="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobile-menu">
@@ -41,18 +41,38 @@ const { lang = 'ru' } = Astro.props;
   <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
     <button class="mobile-close" aria-label="Закрыть меню">×</button>
     <ul class="mobile-nav-list">
-      <li><a href={localizePath('/', lang)}>{t('nav.home', lang)}</a></li>
-      <li><a href={localizePath('/about', lang)}>{t('nav.about', lang)}</a></li>
-      <li><a href={localizePath('/services', lang)}>{t('nav.services', lang)}</a></li>
-      <li><a href={localizePath('/contact', lang)}>{t('nav.contact', lang)}</a></li>
+      <li><a href="#divorce">{t('nav.divorce', lang)}</a></li>
+      <li><a href="#contact">{t('nav.contact', lang)}</a></li>
     </ul>
+    <div class="mobile-lang-switcher">
+      {LOCALES.map(l => (
+        <button
+          class={`lang-btn ${l === lang ? 'active' : ''}`}
+          data-lang={l}
+        >
+          {l === 'kz' ? 'ҚАЗ' : l === 'ru' ? 'РУС' : 'ENG'}
+        </button>
+      ))}
+    </div>
   </div>
 </header>
 
 <style>
 .header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(26, 26, 46, 0.95);
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  padding: 1.5rem 0;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.header.scrolled {
   padding: 1rem 0;
-  border-bottom: 1px solid var(--background-light-color);
+  background: rgba(22, 33, 62, 0.98);
 }
 
 .header-content {
@@ -62,113 +82,181 @@ const { lang = 'ru' } = Astro.props;
   padding: 0 1rem;
 }
 
-.logo h1 {
-  color: var(--primary-color);
-  font-size: 1.5rem;
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
 }
 
 .nav-list {
   display: flex;
   list-style: none;
-  gap: 2rem;
+  gap: 2.5rem;
+  align-items: center;
 }
 
 .nav-list a {
+  color: var(--text);
   text-decoration: none;
-  color: var(--text-primary);
   font-weight: 500;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-.nav-list a:hover {
-  color: var(--accent-color);
+.nav-list a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
 }
 
-.lang-select {
-  padding: 0.5rem;
-  border: 1px solid var(--primary-color);
-  border-radius: 4px;
-  background-color: var(--background-color);
-  color: var(--text-primary);
+.nav-list a:hover::after {
+  width: 100%;
+}
+
+.language-switcher {
+  display: flex;
+  gap: 0.5rem;
+  border: 1px solid var(--accent);
+  border-radius: 25px;
+  padding: 0.4rem 0.8rem;
+  background: rgba(201, 169, 97, 0.1);
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  color: var(--text);
   cursor: pointer;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.lang-btn.active {
+  background: var(--accent);
+  color: var(--primary);
+}
+
+.lang-btn:hover {
+  transform: scale(1.1);
+}
+
+.burger {
+  display: none;
+}
+
+.burger-line {
+  width: 22px;
+  height: 2px;
+  background: var(--text);
+  display: block;
 }
 
 @media (max-width: 768px) {
-  .header-content {
-    /* Скрываем навигацию и переключатель языка на мобильных устройствах.
-       Показываем бургер и мобильное меню по клику. */
-    .nav, .language-switcher {
-      display: none;
-    }
-    .burger {
-      display: inline-flex;
-      background: transparent;
-      border: none;
-      flex-direction: column;
-      gap: 4px;
-      cursor: pointer;
-    }
-    .burger-line {
-      width: 22px;
-      height: 2px;
-      background: var(--text-primary);
-      display: block;
-    }
-    .mobile-menu {
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-      background: rgba(10, 18, 34, 0.95);
-      color: var(--text-light);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      padding: 2rem;
-      /* Slide-in from right */
-      transform: translateX(100%);
-      opacity: 0;
-      transition: transform 300ms ease, opacity 300ms ease;
-      pointer-events: none;
-    }
-    .mobile-menu.open {
-      transform: translateX(0);
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .mobile-close {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: transparent;
-      border: none;
-      color: var(--text-light);
-      font-size: 2rem;
-      cursor: pointer;
-    }
-    .mobile-nav-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-      align-items: center;
-    }
-    .mobile-nav-list a {
-      font-size: 1.25rem;
-      color: var(--text-light);
-      text-decoration: none;
-    }
+  .nav,
+  .language-switcher {
+    display: none;
+  }
+
+  .burger {
+    display: inline-flex;
+    background: transparent;
+    border: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+  }
+
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(26, 26, 46, 0.98);
+    backdrop-filter: blur(10px);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    padding: 2rem;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 300ms ease, opacity 300ms ease;
+    pointer-events: none;
+  }
+
+  .mobile-menu.open {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .mobile-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    font-size: 2.5rem;
+    cursor: pointer;
+    line-height: 1;
+  }
+
+  .mobile-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+
+  .mobile-nav-list a {
+    font-size: 1.5rem;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .mobile-nav-list a:hover {
+    color: var(--accent);
+  }
+
+  .mobile-lang-switcher {
+    display: flex;
+    gap: 0.5rem;
+    border: 1px solid var(--accent);
+    border-radius: 25px;
+    padding: 0.4rem 0.8rem;
+    background: rgba(201, 169, 97, 0.1);
   }
 }
 </style>
 
 <script>
-  // Простая логика открытия/закрытия мобильного меню
+  // Mobile menu toggle
   (function () {
     const burger = document.querySelector('.burger');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -182,7 +270,7 @@ const { lang = 'ru' } = Astro.props;
     if (!burger || !mobileMenu) return;
 
     function updateFocusable() {
-      const selectors = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), [tabindex]:not([tabindex="-1"])';
+      const selectors = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])';
       focusable = Array.from(mobileMenu.querySelectorAll(selectors)).filter((el) => el.offsetParent !== null);
       firstFocusable = focusable[0] || closeBtn;
       lastFocusable = focusable[focusable.length - 1] || closeBtn;
@@ -192,11 +280,9 @@ const { lang = 'ru' } = Astro.props;
       mobileMenu.classList.add('open');
       mobileMenu.setAttribute('aria-hidden', 'false');
       burger.setAttribute('aria-expanded', 'true');
-      // lock scroll
       document.documentElement.style.overflow = 'hidden';
       if (mainContent) mainContent.setAttribute('aria-hidden', 'true');
       updateFocusable();
-      // focus first focusable
       (firstFocusable || closeBtn).focus();
 
       onKeyDown = function (e) {
@@ -242,49 +328,42 @@ const { lang = 'ru' } = Astro.props;
 
     if (closeBtn) closeBtn.addEventListener('click', closeMenu);
 
-    // Close if click outside menu content
     mobileMenu.addEventListener('click', (e) => {
       if (e.target === mobileMenu) closeMenu();
     });
+
+    // Close mobile menu when clicking nav links
+    const mobileNavLinks = mobileMenu.querySelectorAll('.mobile-nav-list a');
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        closeMenu();
+      });
+    });
   })();
-</script>
 
-<script>
-  // Robust client-side language switcher: preserves pathname, search and hash.
+  // Language switcher for all lang buttons (desktop and mobile)
   (function () {
-    const select = document.getElementById('lang-select');
-    if (!select) return;
-
     function stripLocaleFromPath(pathname) {
       const parts = pathname.split('/').filter(Boolean);
-      if (parts.length && ['kz','ru','en'].includes(parts[0])) return '/' + parts.slice(1).join('/');
+      if (parts.length && ['kz', 'ru', 'en'].includes(parts[0])) {
+        return '/' + parts.slice(1).join('/');
+      }
       return pathname;
     }
 
     function localizePath(pathname, locale) {
-      // pathname may include search/hash; separate them
-      let url = document.createElement('a');
-      url.href = pathname;
-      const basePath = stripLocaleFromPath(url.pathname) === '/' ? '' : stripLocaleFromPath(url.pathname);
+      const basePath = stripLocaleFromPath(pathname) === '/' ? '' : stripLocaleFromPath(pathname);
       const newPath = `/${locale}${basePath}`.replace(/\/\/$/, '') || `/${locale}`;
-      return newPath + (url.search || '') + (url.hash || '');
+      return newPath + (location.search || '') + (location.hash || '');
     }
 
-    // Initialize select to current locale if not already set
-    try {
-      const currentParts = location.pathname.split('/').filter(Boolean);
-      if (currentParts.length && ['kz','ru','en'].includes(currentParts[0])) {
-        select.value = currentParts[0];
-      }
-    } catch (e) {
-      // ignore
-    }
-
-    select.addEventListener('change', (e) => {
-      const locale = e.target.value;
-      const newUrl = localizePath(location.pathname + location.search + location.hash, locale);
-      // Use location.assign to keep history behavior
-      location.assign(newUrl);
+    const langButtons = document.querySelectorAll('.lang-btn');
+    langButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const locale = e.target.dataset.lang;
+        const newUrl = localizePath(location.pathname, locale);
+        location.assign(newUrl);
+      });
     });
   })();
 </script>

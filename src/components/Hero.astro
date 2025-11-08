@@ -1,95 +1,107 @@
 ---
 // src/components/Hero.astro
 import '../styles/global.css';
-import FadeIn from './FadeIn.astro';
-import { t, localizePath } from '../i18n/index';
-import { Image } from 'astro:assets';
-import lawyerImage from '../assets/images/lawyer-icon.svg';
+import { t } from '../i18n/index';
 
 export interface Props { lang?: string }
 const { lang = 'ru' } = Astro.props;
 ---
 
 <section class="hero">
-  <div class="container">
-    <div class="hero-content">
-      <div class="hero-image">
-        <Image 
-          src={lawyerImage} 
-          alt={t('hero.imageAlt', lang) || "Professional lawyer"} 
-          width={300} 
-          height={225} 
-          loading="eager"
-          class="lawyer-icon"
-        />
-      </div>
-      <FadeIn tag="h1">{t('hero.title', lang)}</FadeIn>
-      <FadeIn class="hero-text">{t('hero.subtitle', lang)}</FadeIn>
-      <FadeIn>
-        <a href={localizePath('/contact', lang)} class="cta-button">{t('buttons.contact', lang)}</a>
-      </FadeIn>
-    </div>
+  <div class="hero-content">
+    <h1 class="hero-title">{t('hero.title', lang)}</h1>
+    <p class="hero-subtitle">{t('hero.subtitle', lang)}</p>
+    <a href="#contact" class="cta-button">{t('hero.cta', lang)}</a>
   </div>
 </section>
 
 <style>
 .hero {
-  padding: 4rem 0;
-  background: linear-gradient(135deg, var(--background-light-color) 0%, var(--background-color) 100%);
-  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 0 5%;
+  margin-top: 80px; /* Account for fixed header */
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(201, 169, 97, 0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 .hero-content {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 1200px;
+  text-align: center;
+  z-index: 1;
+  animation: fadeInUp 1s ease;
 }
 
-.hero-image {
-  margin-bottom: 2rem;
-}
-
-.lawyer-icon {
-  max-width: 100%;
-  height: auto;
-}
-
-.hero h1 {
-  color: var(--primary-color);
-  font-size: 2.5rem;
+.hero-title {
+  font-size: 4.5rem;
+  font-weight: 800;
   margin-bottom: 1.5rem;
+  background: linear-gradient(135deg, var(--accent), var(--accent-light), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
 }
 
-.hero-text {
-  font-size: 1.2rem;
-  color: var(--text-secondary);
-  margin-bottom: 2rem;
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+  font-weight: 300;
 }
 
 .cta-button {
-  display: inline-block;
-  background-color: var(--accent-color);
-  color: var(--text-light);
-  padding: 1rem 2rem;
+  background: var(--gradient-accent);
+  color: var(--primary);
+  padding: 1.2rem 3rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  box-shadow: 0 10px 30px rgba(201, 169, 97, 0.3);
   text-decoration: none;
-  border-radius: 4px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+  display: inline-block;
 }
 
 .cta-button:hover {
-  background-color: #b8972d; /* немного темнее золотого */
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(201, 169, 97, 0.5);
 }
 
 @media (max-width: 768px) {
   .hero {
-    padding: 2rem 0;
+    padding: 2rem 1rem;
+    margin-top: 70px;
   }
-  
-  .hero h1 {
-    font-size: 2rem;
+
+  .hero-title {
+    font-size: 2.5rem;
   }
-  
-  .hero-text {
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .cta-button {
+    padding: 1rem 2rem;
     font-size: 1rem;
   }
 }

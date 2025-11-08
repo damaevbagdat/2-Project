@@ -1,0 +1,99 @@
+---
+// src/components/ServiceCardAccordion.astro
+import '../styles/global.css';
+
+export interface Props {
+  title: string;
+  isOpen?: boolean;
+}
+
+const { title, isOpen = false } = Astro.props;
+---
+
+<div class={`service-card ${isOpen ? 'active' : ''}`}>
+  <div class="service-header">
+    <h3>{title}</h3>
+    <span class="service-icon">▼</span>
+  </div>
+  <div class="service-content">
+    <slot />
+  </div>
+</div>
+
+<style>
+.service-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 20px;
+  border: 1px solid rgba(201, 169, 97, 0.2);
+  transition: all 0.4s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.service-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 20px 50px rgba(201, 169, 97, 0.2);
+  background: var(--bg-card-hover);
+}
+
+.service-card.active {
+  background: rgba(201, 169, 97, 0.15);
+  border-color: var(--accent);
+}
+
+.service-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.service-card h3 {
+  font-size: 1.5rem;
+  color: var(--accent-light);
+  margin: 0;
+  flex: 1;
+}
+
+.service-icon {
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.service-card.active .service-icon {
+  transform: rotate(180deg);
+}
+
+.service-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, margin-top 0.4s ease, opacity 0.3s ease;
+  opacity: 0;
+}
+
+.service-card.active .service-content {
+  max-height: 500px;
+  margin-top: 1.5rem;
+  opacity: 1;
+}
+
+.service-content :global(p) {
+  color: var(--text-muted);
+  line-height: 1.8;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .service-card {
+    padding: 1.5rem;
+  }
+
+  .service-card h3 {
+    font-size: 1.25rem;
+  }
+}
+</style>

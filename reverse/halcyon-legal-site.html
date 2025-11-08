@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halcyon | Юридические услуги премиум-класса в Казахстане</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #c9a961;
+            --accent-light: #e8d4a0;
+            --text: #ffffff;
+            --text-muted: #a0a0a0;
+            --bg-card: rgba(255, 255, 255, 0.05);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 1rem 5%;
+            background: rgba(22, 33, 62, 0.98);
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 0.5rem;
+            border: 1px solid var(--accent);
+            border-radius: 25px;
+            padding: 0.4rem 0.8rem;
+            background: rgba(201, 169, 97, 0.1);
+        }
+
+        .lang-switcher button {
+            background: none;
+            border: none;
+            color: var(--text);
+            cursor: pointer;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .lang-switcher button.active {
+            background: var(--accent);
+            color: var(--primary);
+        }
+
+        .lang-switcher button:hover {
+            transform: scale(1.1);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 0 5%;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(201, 169, 97, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            text-align: center;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            color: var(--primary);
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(201, 169, 97, 0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(201, 169, 97, 0.5);
+        }
+
+        section {
+            padding: 8rem 5%;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+        }
+
+        section:nth-child(even) {
+            background: var(--secondary);
+        }
+
+        section:nth-child(odd) {
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 3rem;
+            color: var(--text);
+        }
+
+        .section-description {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .services-grid-2col {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            transition: all 0.4s ease;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 20px 50px rgba(201, 169, 97, 0.2);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .service-card.active {
+            background: rgba(201, 169, 97, 0.15);
+            border-color: var(--accent);
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: var(--accent-light);
+            margin: 0;
+            flex: 1;
+        }
+
+        .service-icon {
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            color: var(--accent);
+        }
+
+        .service-card.active .service-icon {
+            transform: rotate(180deg);
+        }
+
+        .service-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, margin-top 0.4s ease, opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .service-card.active .service-content {
+            max-height: 500px;
+            margin-top: 1.5rem;
+            opacity: 1;
+        }
+
+        .service-content p {
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .advantages {
+            background: var(--secondary);
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .advantage-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .advantage-icon {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+        }
+
+        .advantage-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .advantage-card p {
+            color: var(--text-muted);
+            line-height: 1.8;
+        }
+
+        .contact {
+            background: linear-gradient(180deg, var(--secondary), var(--primary));
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 2rem;
+        }
+
+        .contact-info p {
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border-radius: 15px;
+            text-decoration: none;
+            color: var(--text);
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: rgba(201, 169, 97, 0.1);
+            border-color: var(--accent);
+            transform: translateX(10px);
+        }
+
+        .social-icon {
+            font-size: 2rem;
+            width: 50px;
+            text-align: center;
+        }
+
+        .contact-form {
+            background: var(--bg-card);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(201, 169, 97, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--accent-light);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(201, 169, 97, 0.2);
+            border-radius: 10px;
+            color: var(--text);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        footer {
+            background: var(--primary);
+            padding: 3rem 5%;
+            text-align: center;
+            border-top: 1px solid rgba(201, 169, 97, 0.2);
+        }
+
+        footer p {
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid-2col {
+                grid-template-columns: 1fr;
+            }
+
+            .advantages-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="logo">HALCYON</div>
+        <div class="nav-links">
+            <a href="#divorce" class="nav-link">Расторжение брака</a>
+            <a href="#pretension" class="nav-link">Претензионно-исковая работа</a>
+            <a href="#business" class="nav-link">Юрист для бизнеса</a>
+            <a href="#contact" class="nav-link">Контакты</a>
+            <div class="lang-switcher">
+                <button onclick="changeLang('kz')" class="lang-btn" data-lang="kz">ҚАЗ</button>
+                <button onclick="changeLang('ru')" class="lang-btn active" data-lang="ru">РУС</button>
+                <button onclick="changeLang('en')" class="lang-btn" data-lang="en">ENG</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">HALCYON</h1>
+            <p class="hero-subtitle">Юридическая помощь премиум-класса в Казахстане</p>
+            <a href="#contact" class="cta-button hero-cta">Получить консультацию</a>
+        </div>
+    </section>
+
+    <section id="divorce">
+        <h2 class="section-title divorce-title-main">Услуги по <span style="color: var(--accent);">Расторжению Брака</span></h2>
+        <h3 class="section-subtitle divorce-subtitle">под ключ</h3>
+        <p class="section-description divorce-desc">Развод под ключ и расторжение брака — <strong>без вашего личного участия, присутствия и даже согласия второго супруга</strong>. Мы поможем вам провести на своё защиту ваши интересы во всех стадиях процесса.</p>
+        
+        <div class="services-grid">
+            <div class="service-card" onclick="toggleService(this)">
+                <div class="service-header">
+                    <h3 class="divorce-service1-title">Развод без вашего участия</h3>
+                    <span class="service-icon">▼</span>
+                </div>
+                <div class="service-content">
+                    <p class="divorce-service1-desc">Мы поможем вам провести на своём все юридические процедуры — от подготовки документов до представления ваших интересов в суде. Вам не нужно тратить время и нервы — доверьте процесс профессионалам.</p>
+                </div>
+            </div>
+            <div class="service-card" onclick="toggleService(this)">
+                <div class="service-header">
+                    <h3 class="divorce-service2-title">Развод без согласия супруга</h3>
+                    <span class="service-icon">▼</span>
+                </div>
+                <div class="service-content">
+                    <p class="divorce-service2-desc">Если второй супруг не согласен или не является в суд, мы обеспечим грамотное сопровождение и защиту ваших интересов, даже если супруг(а) активно противится против развода.</p>
+                </div>
+            </div>
+            <div class="service-card" onclick="toggleService(this)">
+                <div class="service-header">
+                    <h3 class="divorce-service3-title">Развод с детьми или без детей</h3>
+                    <span class="service-icon">▼</span>
+                </div>
+                <div class="service-content">
+                    <p class="divorce-service3-desc">Мы успешно ведём дела при наличии или отсутствии детей. Возьмем на себя все юридические вопросы: раздел имущества, определение места жительства ребенка, взыскание алиментов. Ваши интересы — в надежных руках.</p>
+                </div>
+            </div>
+            <div class="service-card" onclick="toggleService(this)">
+                <div class="service-header">
+                    <h3 class="divorce-service4-title">Развод при неизвестном местонахождении супруга/и</h3>
+                    <span class="service-icon">▼</span>
+                </div>
+                <div class="service-content">
+                    <p class="divorce-service4-desc">Даже если ваша вторая сторона неизвестно где находится, Мы инициируем судебное разбирательство, проведём все необходимые процедуры и добьемся официального расторжения брака без затягиваний.</p>
+                </div>
+            </div>
+            <div class="service-card" onclick="toggleService(this)">
+                <div class="service-header">
+                    <h3 class="divorce-service5-title">Взыскание алиментов</h3>
+                    <span class="service-icon">▼</span>
+                </div>
+                <div class="service-content">
+                    <p class="divorce-service5-desc">Мы подготовим полный пакет документов, проанализируем ваши доходы и суд и обеспечим справедливое решение. Вы получите надежную защиту — быстро, законно, и без лишних сложностей.</p>
+                </div>
+            </div>
+            <div class="service-card" onclick="toggleService(this)">
+                <div class="service-header">
+                    <h3 class="divorce-service6-title">Определение графика общения с ребенком</h3>
+                    <span class="service-icon">▼</span>
+                </div>
+                <div class="service-content">
+                    <p class="divorce-service6-desc">Для родителей, которые хотят закрепить чётный порядок встреч с ребенком. Мы поможем выработать удобный и справедливый график, соответствующий как интересам ребенка и добьёмся официального расторжения права без затягиваний.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pretension">
+        <h2 class="section-title pretension-title-main"><span style="color: var(--accent);">Претензионно-исковая работа</span></h2>
+        <h3 class="section-subtitle pretension-subtitle">для юридических и физических лиц</h3>
+        <p class="section-description pretension-desc">Мы защищаем интересы клиентов на этапе до спора и в споре с компаниями и частными лицами, по в делах против государственных органов. Претензионная и судебная поддержка позволяют найти эффективное решение для любой юридической ситуации.</p>
+        
+        <div class="services-grid-2col">
+            <div class="service-card" onclick="toggleService(this)">
+                <div class="service-header">
+                    <h3 class="pretension-service1-title">Претензионная стадия</h3>
+                    <span class="service-icon">▼</span>
+                </div>
+                <div class="service-content">
+                    <p class="pretension-service1-desc">Не всегда спор требует обращения в суд. Часто конфликты можно урегулировать мирным путём. Грамотно составленная претензия зачастую позволяет получить результат без суда.</p>
+                </div>
+            </div>
+            <div class="service-card" onclick="toggleService(this)">
+                <div class="service-header">
+                    <h3 class="pretension-service2-title">Формирование доказательной базы</h3>
+                    <span class="service-icon">▼</span>
+                </div>
+                <div class="service-content">
+                    <p class="pretension-service2-desc">Мы тщательно анализируем ситуации, собираем и систематизируем документы, заключения, показания и другие доказательства.</p>
+                </div>
+            </div>
+            <div class="service-card" onclick="toggleService(this)">
+                <div class="service-header">
+                    <h3 class="pretension-service3-title">Судебное представительство</h3>
+                    <span class="service-icon">▼</span>
+                </div>
+                <div class="service-content">
+                    <p class="pretension-service3-desc">Если спор не удаётся урегулировать мирным путём, мы готовим исковое заявление, подаём его в суд и полностью представляем ваши интересы на заседании.</p>
+                </div>
+            </div>
+            <div class="service-card" onclick="toggleService(this)">
+                <div class="service-header">
+                    <h3 class="pretension-service4-title">Работа с любыми оппонентами</h3>
+                    <span class="service-icon">▼</span>
+                </div>
+                <div class="service-content">
+                    <p class="pretension-service4-desc">Мы ведем дела не только с компаниями и частными лицами, но и с государственными органами.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="business">
+        <h2 class="section-title business-title-main"><span style="color: var(--accent);">Карманный юрист</span> для бизнеса</h2>
+        <p class="section-description business-desc">Ваш персональный юрист на договоре — всегда на связи и готов оперативно решить любой юридический вопрос компании. Вам не нужно держать юриста в штате, мы предоставляем весь спектр услуг и являемся оптимизацией.</p>
+        
+        <div class="services-grid-2col">
+            <div class="service-card" onclick="toggleService(this)">
+                <div class="service-header">
+                    <h3 class="business-service1-title">Анализ договоров</h3>
+                    <span class="service-icon">▼</span>
+                </div>
+                <div class="service-content">
+                    <p class="business-service1-desc">Мы анализируем каждый пункт договора: проверяем условия, юридические последствия и возможные правовые риски. Такой анализ позволяет вам минимизировать риски и избежать конфликтов в будущем.</p>
+                </div>
+            </div>
+            <div class="service-card" onclick="toggleService(this)">
+                <div class="service-header">
+                    <h3 class="business-service2-title">Разработка и сопровождение договоров</h3>
+                    <span class="service-icon">▼</span>
+                </div>
+                <div class="service-content">
+                    <p class="business-service2-desc">Создаем новые договоры под конкретные задачи вашего бизнеса: поставки, аренды, подряда, оказания услуг и др. Если условия партнера не соответствуют вашим интересам, мы составим протокол разногласий и добьемся внесения изменений.</p>
+                </div>
+            </div>
+            <div class="service-card" onclick="toggleService(this)">
+                <div class="service-header">
+                    <h3 class="business-service3-title">Проверка контрагентов</h3>
+                    <span class="service-icon">▼</span>
+                </div>
+                <div class="service-content">
+                    <p class="business-service3-desc">Перед тем как заключить сделку, важно знать, с кем вы имеете дело. Мы проверяем контрагентов на предмет долгов, судебных споров, наличие в реестрах и других факторов, которые могут повлиять на сотрудничество.</p>
+                </div>
+            </div>
+            <div class="service-card" onclick="toggleService(this)">
+                <div class="service-header">
+                    <h3 class="business-service4-title">Подготовка официальных писем и ответов</h3>
+                    <span class="service-icon">▼</span>
+                </div>
+                <div class="service-content">
+                    <p class="business-service4-desc">Мы готовим юридически грамотные письма, запросы и ответы для переговоров с партнерами, клиентами, государством или госорганами. Такая деловая переписка помогает эффективно защищать ваши интересы.</p>
+                </div>
+            </div>
+            <div class="service-card" onclick="toggleService(this)">
+                <div class="service-header">
+                    <h3 class="business-service5-title">Работа с государственными органами</h3>
+                    <span class="service-icon">▼</span>
+                </div>
+                <div class="service-content">
+                    <p class="business-service5-desc">Если ваш бизнес столкнулся с проверкой или спором, мы берём процесс под контроль. Участвуем в переговорах с различными органами, готовим возражения и жалобы, обжалуем неправомерные действия или решения.</p>
+                </div>
+            </div>
+            <div class="service-card" onclick="toggleService(this)">
+                <div class="service-header">
+                    <h3 class="business-service6-title">Регистрация товарных знаков и защита интеллектуальной собственности</h3>
+                    <span class="service-icon">▼</span>
+                </div>
+                <div class="service-content">
+                    <p class="business-service6-desc">Мы помогаем зарегистрировать товарные знаки, патенты и другие объекты интеллектуальной собственности, чтобы никто не мог незаконно использовать вашу разработку или бренд.</p>
+                </div>
+            </div>
+            <div class="service-card" onclick="toggleService(this)">
+                <div class="service-header">
+                    <h3 class="business-service7-title">Комплексная правовая поддержка бизнеса</h3>
+                    <span class="service-icon">▼</span>
+                </div>
+                <div class="service-content">
+                    <p class="business-service7-desc">Мы всегда рядом — от документации по текущим вопросам до сопровождения масштабных проектов. Независимо от ситуации, вы получите полное решение, снижение рисков и оптимизацию для развития бизнеса.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="advantages">
+        <h2 class="section-title advantages-title">Наши преимущества</h2>
+        <div class="advantages-grid">
+            <div class="advantage-card">
+                <div class="advantage-icon">📱</div>
+                <h3 class="adv1-title">Годы практики</h3>
+                <p class="adv1-desc">Опыт юридической практики более 10 лет.</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">🔒</div>
+                <h3 class="adv2-title">Конфиденциальность</h3>
+                <p class="adv2-desc">Мы гарантируем полную конфиденциальность вашей информации. Все данные, полученные в ходе работы, защищены и не передаются третьим лицам без вашего согласия.</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">👤</div>
+                <h3 class="adv3-title">Персональный подход</h3>
+                <p class="adv3-desc">Индивидуальная работа с каждым клиентом позволяет решить даже самые сложные проблемы.</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">⚖️</div>
+                <h3 class="adv4-title">Отличный сервис</h3>
+                <p class="adv4-desc">Мы предоставляем качественный сервис и ценим наших клиентов.</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">⚡</div>
+                <h3 class="adv5-title">Эффективность</h3>
+                <p class="adv5-desc">На каждое дело мы выделяем специалиста, который определиться работает только с вашей компанией.</p>
+            </div>
+            <div class="advantage-card">
+                <div class="advantage-icon">💰</div>
+                <h3 class="adv6-title">Выгода</h3>
+                <p class="adv6-desc">У нас фиксированные цены на стандартные услуги, поэтому вы всегда знаете, за что платите.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2 class="section-title contact-title">Связаться со мной</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2 class="contact-subtitle">Выберите удобный способ связи</h2>
+                <p class="contact-desc">Свяжитесь со мной любым удобным способом, и я помогу решить ваши юридические вопросы</p>
+                <div class="social-links">
+                    <a href="https://wa.me/77079970411" class="social-link" target="_blank">
+                        <span class="social-icon">📱</span>
+                        <div>
+                            <strong>WhatsApp</strong>
+                            <p style="margin: 0; color: var(--text-muted); font-size: 0.9rem;">Быстрый ответ</p>
+                        </div>
+                    </a>
+                    <a href="https://t.me/halci" class="social-link" target="_blank">
+                        <span class="social-icon">✈️</span>
+                        <div>
+                            <strong>Telegram</strong>
+                            <p style="margin: 0; color: var(--text-muted); font-size: 0.9rem;">Мессенджер</p>
+                        </div>
+                    </a>
+                    <a href="https://instagram.com/alash_lawyer" class="social-link" target="_blank">
+                        <span class="social-icon">📸</span>
+                        <div>
+                            <strong>Instagram</strong>
+                            <p style="margin: 0; color: var(--text-muted); font-size: 0.9rem;">Следите за новостями</p>
+                        </div>
+                    </a>
+                    <a href="tel:+77079970411" class="social-link">
+                        <span class="social-icon">📞</span>
+                        <div>
+                            <strong>+7 (707) 997-04-11</strong>
+                            <p style="margin: 0; color: var(--text-muted); font-size: 0.9rem;">Звонок</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3 style="color: var(--accent); margin-bottom: 1.5rem;" class="form-title">Отправить сообщение</h3>
+                <form onsubmit="handleSubmit(event)">
+                    <div class="form-group">
+                        <label class="form-label-name">Ваше имя</label>
+                        <input type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label-phone">Телефон</label>
+                        <input type="tel" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label-message">Сообщение</label>
+                        <textarea required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button form-submit" style="width: 100%;">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p class="footer-text">&copy; 2025 Halcyon. Все права защищены. Республика Казахстан</p>
+    </footer>
+
+    <script>
+        const translations = {
+            ru: {
+                navDivorce: 'Расторжение брака',
+                navPretension: 'Претензионно-исковая работа',
+                navBusiness: 'Юрист для бизнеса',
+                navContact: 'Контакты',
+                heroTitle: 'HALCYON',
+                heroSubtitle: 'Юридическая помощь премиум-класса в Казахстане',
+                heroCta: 'Получить консультацию',
+                contactTitle: 'Связаться со мной',
+                contactSubtitle: 'Выберите удобный способ связи',
+                contactDesc: 'Свяжитесь со мной любым удобным способом',
+                formTitle: 'Отправить сообщение',
+                formLabelName: 'Ваше имя',
+                formLabelPhone: 'Телефон',
+                formLabelMessage: 'Сообщение',
+                formSubmit: 'Отправить',
+                footerText: '© 2025 Halcyon. Все права защищены. Республика Казахстан'
+            },
+            kz: {
+                navDivorce: 'Некені бұзу',
+                navPretension: 'Талап-шағым жұмыстары',
+                navBusiness: 'Бизнес үшін заңгер',
+                navContact: 'Байланыс',
+                heroTitle: 'HALCYON',
+                heroSubtitle: 'Қазақстанда премиум-класс заңгерлік көмек',
+                heroCta: 'Консультация алу',
+                contactTitle: 'Маған хабарласыңыз',
+                contactSubtitle: 'Ыңғайлы байланыс әдісін таңдаңыз',
+                contactDesc: 'Маған ыңғайлы кез келген әдіспен хабарласыңыз',
+                formTitle: 'Хабарлама жіберу',
+                formLabelName: 'Сіздің атыңыз',
+                formLabelPhone: 'Телефон',
+                formLabelMessage: 'Хабарлама',
+                formSubmit: 'Жіберу',
+                footerText: '© 2025 Halcyon. Барлық құқықтар қорғалған. Қазақстан Республикасы'
+            },
+            en: {
+                navDivorce: 'Divorce Services',
+                navPretension: 'Legal Claims',
+                navBusiness: 'Business Lawyer',
+                navContact: 'Contact',
+                heroTitle: 'HALCYON',
+                heroSubtitle: 'Premium Legal Services in Kazakhstan',
+                heroCta: 'Get Consultation',
+                contactTitle: 'Contact Me',
+                contactSubtitle: 'Choose convenient way',
+                contactDesc: 'Contact me in any way and I will help solve your legal issues',
+                formTitle: 'Send Message',
+                formLabelName: 'Your Name',
+                formLabelPhone: 'Phone',
+                formLabelMessage: 'Message',
+                formSubmit: 'Send',
+                footerText: '© 2025 Halcyon. All rights reserved. Republic of Kazakhstan'
+            }
+        };
+
+        let currentLang = 'ru';
+
+        function changeLang(lang) {
+            if (!translations[lang]) return;
+            currentLang = lang;
+            
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === lang) btn.classList.add('active');
+            });
+
+            const t = translations[lang];
+            
+            const navLinks = document.querySelectorAll('.nav-link');
+            if (navLinks[0]) navLinks[0].textContent = t.navDivorce;
+            if (navLinks[1]) navLinks[1].textContent = t.navPretension;
+            if (navLinks[2]) navLinks[2].textContent = t.navBusiness;
+            if (navLinks[3]) navLinks[3].textContent = t.navContact;
+            
+            updateText('.hero-title', t.heroTitle);
+            updateText('.hero-subtitle', t.heroSubtitle);
+            updateText('.hero-cta', t.heroCta);
+            
+            updateText('.divorce-title-main', t.divorceTitleMain);
+            updateText('.divorce-subtitle', t.divorceSubtitle);
+            
+            updateText('.pretension-title-main', t.pretensionTitleMain);
+            updateText('.pretension-subtitle', t.pretensionSubtitle);
+            
+            updateText('.business-title-main', t.businessTitleMain);
+            
+            updateText('.advantages-title', t.advantagesTitle);
+            
+            updateText('.contact-title', t.contactTitle);
+            updateText('.contact-subtitle', t.contactSubtitle);
+            updateText('.contact-desc', t.contactDesc);
+            updateText('.form-title', t.formTitle);
+            updateText('.form-label-name', t.formLabelName);
+            updateText('.form-label-phone', t.formLabelPhone);
+            updateText('.form-label-message', t.formLabelMessage);
+            updateText('.form-submit', t.formSubmit);
+            updateText('.footer-text', t.footerText);
+        }
+
+        function updateText(selector, text) {
+            const el = document.querySelector(selector);
+            if (el && text) el.textContent = text;
+        }
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert(currentLang === 'ru' ? 'Спасибо! Ваше сообщение отправлено.' : 
+                  currentLang === 'kz' ? 'Рахмет! Хабарламаңыз жіберілді.' : 
+                  'Thank you! Your message has been sent.');
+            e.target.reset();
+        }
+
+        function toggleService(card) {
+            const isActive = card.classList.contains('active');
+            const section = card.closest('section');
+            section.querySelectorAll('.service-card').forEach(c => {
+                c.classList.remove('active');
+            });
+            if (!isActive) {
+                card.classList.add('active');
+            }
+        }
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.service-card, .advantage-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html> 'We carefully analyze situations, collect and systematize documents, conclusions, testimonies and other evidence.',
+                pretensionService3Title: 'Court representation',
+                pretensionService3Desc: 'If the dispute cannot be resolved peacefully, we prepare a statement of claim, file it in court and fully represent your interests at the hearing.',
+                pretensionService4Title: 'Work with any opponents',
+                pretensionService4Desc: 'We handle cases not only with companies and private individuals, but also with government agencies.',
+                businessTitleMain: 'Pocket lawyer for business',
+                businessDesc: 'Your personal lawyer on contract — always in touch and ready to promptly solve any legal issue of the company.',
+                businessService1Title: 'Contract analysis',
+                businessService1Desc: 'We analyze each clause of the contract: check the conditions, legal consequences and possible legal risks. Such analysis allows you to minimize risks and avoid conflicts in the future.',
+                businessService2Title: 'Contract development and support',
+                businessService2Desc: 'We create new contracts for specific tasks of your business: deliveries, rent, contracting, services, etc. If the partner terms do not meet your interests, we will draft a protocol of disagreements and achieve changes.',
+                businessService3Title: 'Counterparty verification',
+                businessService3Desc: 'Before concluding a deal, it is important to know who you are dealing with. We check counterparties for debts, court disputes, presence in registries and other factors that may affect cooperation.',
+                businessService4Title: 'Preparation of official letters and responses',
+                businessService4Desc: 'We prepare legally competent letters, requests and responses for negotiations with partners, clients, the state or government agencies. Such business correspondence helps to effectively protect your interests.',
+                businessService5Title: 'Work with government agencies',
+                businessService5Desc: 'If your business faces an audit or dispute, we take the process under control. We participate in negotiations with various agencies, prepare objections and complaints, appeal unlawful actions or decisions.',
+                businessService6Title: 'Trademark registration and intellectual property protection',
+                businessService6Desc: 'We help register trademarks, patents and other intellectual property objects so that no one can illegally use your development or brand.',
+                businessService7Title: 'Comprehensive legal support for business',
+                businessService7Desc: 'We are always there — from documentation on current issues to support of large-scale projects. Regardless of the situation, you will receive a complete solution, risk reduction and optimization for business development.',
+                advantagesTitle: 'Our advantages',
+                adv1Title: 'Years of practice',
+                adv1Desc: 'Legal practice experience of more than 10 years.',
+                adv2Title: 'Confidentiality',
+                adv2Desc: 'We guarantee complete confidentiality of your information. All data received during the work is protected and not transferred to third parties without your consent.',
+                adv3Title: 'Personal approach',
+                adv3Desc: 'Individual work with each client allows solving even the most complex problems.',
+                adv4Title: 'Excellent service',
+                adv4Desc: 'We provide quality service and value our clients.',
+                adv5Title: 'Efficiency',
+                adv5Desc: 'For each case, we allocate a specialist who works only with your company.',
+                adv6Title: 'Benefit',
+                adv6Desc: 'We have fixed prices for standard services, so you always know what you are paying for.',
+                contactTitle: 'Contact Me',
+                contactSubtitle: 'Choose convenient way',
+                contactDesc: 'Contact me in any way and I will help solve your legal issues',
+                formTitle: 'Send Message',
+                formLabelName: 'Your Name',
+                formLabelPhone: 'Phone',
+                formLabelMessage: 'Message',
+                formSubmit: 'Send',
+                footerText: '© 2025 Halcyon. All rights reserved. Republic of Kazakhstan'
+            }
+        };
+        };
+
+        let currentLang = 'ru';
+
+        function changeLang(lang) {
+            if (!translations[lang]) return;
+            currentLang = lang;
+            
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.dataset.lang === lang) btn.classList.add('active');
+            });
+
+            const t = translations[lang];
+            
+            // Navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            if (navLinks[0]) navLinks[0].textContent = t.navDivorce;
+            if (navLinks[1]) navLinks[1].textContent = t.navPretension;
+            if (navLinks[2]) navLinks[2].textContent = t.navBusiness;
+            if (navLinks[3]) navLinks[3].textContent = t.navContact;
+            
+            // Hero
+            updateText('.hero-title', t.heroTitle);
+            updateText('.hero-subtitle', t.heroSubtitle);
+            updateText('.hero-cta', t.heroCta);
+            
+            // Divorce section
+            updateText('.divorce-title-main', t.divorceTitleMain);
+            updateText('.divorce-subtitle', t.divorceSubtitle);
+            updateText('.divorce-desc', t.divorceDesc);
+            updateText('.divorce-service1-title', t.divorceService1Title);
+            updateText('.divorce-service1-desc', t.divorceService1Desc);
+            updateText('.divorce-service2-title', t.divorceService2Title);
+            updateText('.divorce-service2-desc', t.divorceService2Desc);
+            updateText('.divorce-service3-title', t.divorceService3Title);
+            updateText('.divorce-service3-desc', t.divorceService3Desc);
+            updateText('.divorce-service4-title', t.divorceService4Title);
+            updateText('.divorce-service4-desc', t.divorceService4Desc);
+            updateText('.divorce-service5-title', t.divorceService5Title);
+            updateText('.divorce-service5-desc', t.divorceService5Desc);
+            updateText('.divorce-service6-title', t.divorceService6Title);
+            updateText('.divorce-service6-desc', t.divorceService6Desc);
+            
+            // Pretension section
+            updateText('.pretension-title-main', t.pretensionTitleMain);
+            updateText('.pretension-subtitle', t.pretensionSubtitle);
+            updateText('.pretension-desc', t.pretensionDesc);
+            updateText('.pretension-service1-title', t.pretensionService1Title);
+            updateText('.pretension-service1-desc', t.pretensionService1Desc);
+            updateText('.pretension-service2-title', t.pretensionService2Title);
+            updateText('.pretension-service2-desc', t.pretensionService2Desc);
+            updateText('.pretension-service3-title', t.pretensionService3Title);
+            updateText('.pretension-service3-desc', t.pretensionService3Desc);
+            updateText('.pretension-service4-title', t.pretensionService4Title);
+            updateText('.pretension-service4-desc', t.pretensionService4Desc);
+            
+            // Business section
+            updateText('.business-title-main', t.businessTitleMain);
+            updateText('.business-desc', t.businessDesc);
+            updateText('.business-service1-title', t.businessService1Title);
+            updateText('.business-service1-desc', t.businessService1Desc);
+            updateText('.business-service2-title', t.businessService2Title);
+            updateText('.business-service2-desc', t.businessService2Desc);
+            updateText('.business-service3-title', t.businessService3Title);
+            updateText('.business-service3-desc', t.businessService3Desc);
+            updateText('.business-service4-title', t.businessService4Title);
+            updateText('.business-service4-desc', t.businessService4Desc);
+            updateText('.business-service5-title', t.businessService5Title);
+            updateText('.business-service5-desc', t.businessService5Desc);
+            updateText('.business-service6-title', t.businessService6Title);
+            updateText('.business-service6-desc', t.businessService6Desc);
+            updateText('.business-service7-title', t.businessService7Title);
+            updateText('.business-service7-desc', t.businessService7Desc);
+            
+            // Advantages
+            updateText('.advantages-title', t.advantagesTitle);
+            updateText('.adv1-title', t.adv1Title);
+            updateText('.adv1-desc', t.adv1Desc);
+            updateText('.adv2-title', t.adv2Title);
+            updateText('.adv2-desc', t.adv2Desc);
+            updateText('.adv3-title', t.adv3Title);
+            updateText('.adv3-desc', t.adv3Desc);
+            updateText('.adv4-title', t.adv4Title);
+            updateText('.adv4-desc', t.adv4Desc);
+            updateText('.adv5-title', t.adv5Title);
+            updateText('.adv5-desc', t.adv5Desc);
+            updateText('.adv6-title', t.adv6Title);
+            updateText('.adv6-desc', t.adv6Desc);
+            
+            // Contact
+            updateText('.contact-title', t.contactTitle);
+            updateText('.contact-subtitle', t.contactSubtitle);
+            updateText('.contact-desc', t.contactDesc);
+            updateText('.form-title', t.formTitle);
+            updateText('.form-label-name', t.formLabelName);
+            updateText('.form-label-phone', t.formLabelPhone);
+            updateText('.form-label-message', t.formLabelMessage);
+            updateText('.form-submit', t.formSubmit);
+            updateText('.footer-text', t.footerText);
+        }
+            updateText('.form-submit', t.formSubmit);
+            updateText('.footer-text', t.footerText);
+        }
+
+        function updateText(selector, text) {
+            const el = document.querySelector(selector);
+            if (el && text) el.textContent = text;
+        }
+
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        function handleSubmit(e) {
+            e.preventDefault();
+            alert(currentLang === 'ru' ? 'Спасибо! Ваше сообщение отправлено.' : 
+                  currentLang === 'kz' ? 'Рахмет! Хабарламаңыз жіберілді.' : 
+                  'Thank you! Your message has been sent.');
+            e.target.reset();
+        }
+
+        function toggleService(card) {
+            const isActive = card.classList.contains('active');
+            const section = card.closest('section');
+            section.querySelectorAll('.service-card').forEach(c => {
+                c.classList.remove('active');
+            });
+            if (!isActive) {
+                card.classList.add('active');
+            }
+        }
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.service-card, .advantage-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

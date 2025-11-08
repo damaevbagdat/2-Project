@@ -5,21 +5,22 @@ export interface Props {
 	title?: string;
 	description?: string;
 }
-const { 
-	lang = 'ru', 
-	title = 'Alash-Zan - Юридическая фирма премиум-класса', 
-	description = 'Alash-Zan - ведущая юридическая фирма в Казахстане, специализирующаяся на корпоративном праве, судебных спорах и комплаенсе.' 
+const {
+	lang = 'ru',
+	title = 'Halcyon | Юридические услуги премиум-класса в Казахстане',
+	description = 'Halcyon - юридическая помощь премиум-класса в Казахстане. Расторжение брака под ключ, взыскание алиментов, определение графика общения с ребенком. Полная конфиденциальность и профессиональный подход.'
 } = Astro.props;
 import '../styles/global.css';
+import '../styles/halcyon-animations.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { generateHreflangs } from '../i18n/index';
 
 // Define localized site names
 const localizedSiteNames = {
-  ru: 'Alash-Zan - Юридическая фирма премиум-класса',
-  en: 'Alash-Zan - Premium Legal Firm',
-  kz: 'Alash-Zan - Сын кластағы заңдық компания'
+  ru: 'Halcyon | Юридические услуги премиум-класса в Казахстане',
+  en: 'Halcyon | Premium Legal Services in Kazakhstan',
+  kz: 'Halcyon | Қазақстанда премиум-класс заңгерлік қызметтер'
 };
 
 const siteName = localizedSiteNames[lang] || localizedSiteNames.ru;
@@ -75,11 +76,14 @@ const siteName = localizedSiteNames[lang] || localizedSiteNames.ru;
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content={siteName} />
-    
+    <meta property="og:image" content={new URL('/og-image.jpg', Astro.url).href} />
+    <meta property="og:locale" content={lang === 'ru' ? 'ru_RU' : lang === 'kz' ? 'kk_KZ' : 'en_US'} />
+
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={new URL('/og-image.jpg', Astro.url).href} />
     
     {generateHreflangs(Astro.url.pathname).map(item => (
       <link rel="alternate" href={item.href} hreflang={item.locale} />

@@ -1,7 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
-import Advantages from '../../components/Advantages.astro';
+import DivorceSection from '../../components/DivorceSection.astro';
+import AdvantagesSection from '../../components/AdvantagesSection.astro';
+import ContactSection from '../../components/ContactSection.astro';
 
 const locale = Astro.params.lang;
 
@@ -13,16 +15,16 @@ export async function getStaticPaths() {
 // Define localized titles and descriptions
 const localizedContent = {
   ru: {
-    title: 'Halcyon - Юридическая фирма премиум-класса',
-    description: 'Halcyon - ведущая юридическая фирма в Казахстане, специализирующаяся на корпоративном праве, судебных спорах и комплаенсе.'
+    title: 'Halcyon | Юридические услуги премиум-класса в Казахстане',
+    description: 'Halcyon - юридическая помощь премиум-класса в Казахстане. Расторжение брака под ключ, взыскание алиментов, определение графика общения с ребенком. Полная конфиденциальность и профессиональный подход.'
   },
   en: {
-    title: 'Halcyon - Premium Legal Firm',
-    description: 'Halcyon - leading legal firm in Kazakhstan specializing in corporate law, litigation, and compliance.'
+    title: 'Halcyon | Premium Legal Services in Kazakhstan',
+    description: 'Halcyon - premium legal services in Kazakhstan. Turnkey divorce, alimony collection, child visitation schedule determination. Complete confidentiality and professional approach.'
   },
   kz: {
-    title: 'Halcyon - Сын кластағы заңдық компания',
-    description: 'Halcyon - Қазақстандағы жетекші заңдық компания, корпоративтік құқық, сот тәжірибесі және сәйкестік бойынша маманданған.'
+    title: 'Halcyon | Қазақстанда премиум-класс заңгерлік қызметтер',
+    description: 'Halcyon - Қазақстанда премиум-класс заңгерлік көмек. Некені кілт астында бұзу, алименттерді өндіріп алу, баламен қарым-қатынас кестесін анықтау. Толық құпиялылық және кәсіби көзқарас.'
   }
 };
 
@@ -31,5 +33,19 @@ const content = localizedContent[locale] || localizedContent.ru;
 
 <BaseLayout lang={locale} title={content.title} description={content.description}>
   <Hero lang={locale} />
-  <Advantages lang={locale} />
+  <DivorceSection lang={locale} />
+  <AdvantagesSection lang={locale} />
+  <ContactSection lang={locale} />
 </BaseLayout>
+
+<script>
+  import { initAccordion } from '../../scripts/accordion';
+  import { initScrollEffects } from '../../scripts/scroll-effects';
+  import { initSmoothScroll } from '../../scripts/smooth-scroll';
+
+  document.addEventListener('DOMContentLoaded', () => {
+    initAccordion();
+    initScrollEffects();
+    initSmoothScroll();
+  });
+</script>

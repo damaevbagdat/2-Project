@@ -1,0 +1,111 @@
+---
+// src/components/DivorceSection.astro
+import '../styles/global.css';
+import ServiceCardAccordion from './ServiceCardAccordion.astro';
+import { t } from '../i18n/index';
+
+export interface Props { lang?: string }
+const { lang = 'ru' } = Astro.props;
+---
+
+<section id="divorce" class="divorce-section">
+  <div class="container">
+    <h2 class="section-title">
+      {t('sections.divorceTitle', lang)} <span class="accent-text">{t('sections.divorceTitleAccent', lang)}</span>
+    </h2>
+    <h3 class="section-subtitle">{t('sections.divorceSubtitle', lang)}</h3>
+    <p class="section-description">{t('sections.divorceDesc', lang)}</p>
+
+    <div class="services-grid">
+      <ServiceCardAccordion title={t('divorce.service1.title', lang)}>
+        <p>{t('divorce.service1.desc', lang)}</p>
+      </ServiceCardAccordion>
+
+      <ServiceCardAccordion title={t('divorce.service2.title', lang)}>
+        <p>{t('divorce.service2.desc', lang)}</p>
+      </ServiceCardAccordion>
+
+      <ServiceCardAccordion title={t('divorce.service3.title', lang)}>
+        <p>{t('divorce.service3.desc', lang)}</p>
+      </ServiceCardAccordion>
+
+      <ServiceCardAccordion title={t('divorce.service4.title', lang)}>
+        <p>{t('divorce.service4.desc', lang)}</p>
+      </ServiceCardAccordion>
+
+      <ServiceCardAccordion title={t('divorce.service5.title', lang)}>
+        <p>{t('divorce.service5.desc', lang)}</p>
+      </ServiceCardAccordion>
+
+      <ServiceCardAccordion title={t('divorce.service6.title', lang)}>
+        <p>{t('divorce.service6.desc', lang)}</p>
+      </ServiceCardAccordion>
+    </div>
+  </div>
+</section>
+
+<style>
+.divorce-section {
+  padding: 8rem 5%;
+  background: var(--gradient-bg);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.accent-text {
+  color: var(--accent);
+}
+
+.section-subtitle {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 3rem;
+  color: var(--text);
+}
+
+.section-description {
+  text-align: center;
+  max-width: 900px;
+  margin: 0 auto 4rem;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  line-height: 1.8;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .divorce-section {
+    padding: 4rem 1rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.5rem;
+  }
+
+  .section-description {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+</style>

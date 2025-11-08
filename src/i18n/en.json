@@ -3,7 +3,8 @@
     "home": "Home",
     "about": "About",
     "services": "Services",
-    "contact": "Contact"
+    "contact": "Contact",
+    "divorce": "Divorce Services"
   },
   "buttons": {
     "contact": "Get consultation",
@@ -18,26 +19,85 @@
     "address": "Nur-Sultan, st. XXX, bld. XX",
     "social": "Social",
     "nav": "Navigation",
-    "copyright": "All rights reserved."
+    "copyright": "© 2025 Halcyon. All rights reserved. Republic of Kazakhstan"
   },
   "hero": {
-    "title": "Proactive legal support for your business",
-    "subtitle": "We don't just solve problems — we prevent them. Modern legal solutions in the digital world for premium companies.",
-    "imageAlt": "Professional lawyer - business consultation"
+    "title": "HALCYON",
+    "subtitle": "Premium Legal Services in Kazakhstan",
+    "imageAlt": "Professional lawyer - business consultation",
+    "cta": "Get Consultation"
+  },
+  "sections": {
+    "divorceTitle": "Services for",
+    "divorceTitleAccent": "Divorce",
+    "divorceSubtitle": "turnkey",
+    "divorceDesc": "Turnkey divorce and dissolution of marriage — without your personal participation, presence, or even the consent of the second spouse. We will help you protect your interests at all stages of the process.",
+    "advantagesTitle": "Our advantages",
+    "contactTitle": "Contact Me"
+  },
+  "divorce": {
+    "service1": {
+      "title": "Divorce without your participation",
+      "desc": "We will help you conduct all legal procedures — from preparing documents to representing your interests in court. You don't need to waste time and nerves — entrust the process to professionals."
+    },
+    "service2": {
+      "title": "Divorce without spouse consent",
+      "desc": "If the second spouse does not agree or does not appear in court, we will provide competent support and protection of your interests, even if the spouse actively opposes the divorce."
+    },
+    "service3": {
+      "title": "Divorce with or without children",
+      "desc": "We successfully handle cases with or without children. We will take on all legal issues: division of property, determination of the child's place of residence, collection of alimony. Your interests are in safe hands."
+    },
+    "service4": {
+      "title": "Divorce when spouse's location is unknown",
+      "desc": "Even if your spouse's whereabouts are unknown, we will initiate legal proceedings, carry out all necessary procedures and achieve official dissolution of marriage without delays."
+    },
+    "service5": {
+      "title": "Alimony collection",
+      "desc": "We will prepare a complete package of documents, analyze your income and court and ensure a fair decision. You will receive reliable protection — quickly, legally, and without unnecessary complications."
+    },
+    "service6": {
+      "title": "Determining child visitation schedule",
+      "desc": "For parents who want to establish a clear order of meetings with the child. We will help develop a convenient and fair schedule that meets the interests of the child and achieve official dissolution of rights without delays."
+    }
   },
   "advantages": {
-    "title": "Our advantages",
-    "card1": {
-      "title": "Proactive approach",
-      "description": "We don't just solve problems, we prevent them"
+    "adv1": {
+      "title": "Years of practice",
+      "desc": "Legal practice experience of more than 10 years."
     },
-    "card2": {
-      "title": "Digital literacy",
-      "description": "Experts in IT law and data protection"
+    "adv2": {
+      "title": "Confidentiality",
+      "desc": "We guarantee complete confidentiality of your information. All data received during the work is protected and not transferred to third parties without your consent."
     },
-    "card3": {
-      "title": "Full transparency",
-      "description": "Clear terms at every stage"
+    "adv3": {
+      "title": "Personal approach",
+      "desc": "Individual work with each client allows solving even the most complex problems."
+    },
+    "adv4": {
+      "title": "Excellent service",
+      "desc": "We provide quality service and value our clients."
+    },
+    "adv5": {
+      "title": "Efficiency",
+      "desc": "For each case, we allocate a specialist who works only with your company."
+    },
+    "adv6": {
+      "title": "Benefit",
+      "desc": "We have fixed prices for standard services, so you always know what you are paying for."
     }
+  },
+  "contact": {
+    "subtitle": "Choose convenient way",
+    "desc": "Contact me in any way and I will help solve your legal issues",
+    "whatsappDesc": "Quick response",
+    "telegramDesc": "Messenger",
+    "instagramDesc": "Follow the news",
+    "phoneDesc": "Call",
+    "formTitle": "Send Message",
+    "formLabelName": "Your Name",
+    "formLabelPhone": "Phone",
+    "formLabelMessage": "Message",
+    "formSubmit": "Send"
   }
 }
