@@ -103,3 +103,18 @@ sessions/
 # Other common ignores
 .DS_Store
 desktop.ini
+# Claude Code settings
+.claude/
+
+# Infrastructure secrets
+# ВАЖНО: Локальные файлы с паролями и токенами НЕ должны попадать в Git!
+**/INFRASTRUCTURE.local.md
+**/infrastructure.local.md
+**/*credentials*.md
+**/*secrets*.md
+**/*passwords*.txt
+
+# AI Assistant documentation (local only)
+# Эти файлы создаются только для локального использования Claude Code AI
+docs/06-ai-assistant/
+CHANGELOG.md

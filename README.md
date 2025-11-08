@@ -4,10 +4,16 @@
 
 Learning to code with Cursor AI
 
-## Project Files
+## 📚 Документация
 
-- `tech_spec.md`: Техническое задание на разработку сайта.
-- `ROADMAP.md`: Дорожная карта проекта с разбивкой на задачи.
+Вся документация проекта организована в папке `docs/`:
+
+- **[docs/](docs/)** - Главная страница документации с навигацией
+- **[Requirements.md](docs/01-project/Requirements.md)** - Техническое задание на разработку сайта
+- **[ROADMAP.md](docs/02-development/ROADMAP.md)** - Дорожная карта проекта с разбивкой на задачи
+- **[STRUCTURE.md](docs/01-project/STRUCTURE.md)** - Детальная структура проекта
+- **[CI_CD_SETUP.md](docs/03-deployment/CI_CD_SETUP.md)** - Настройка CI/CD
+- **[MAINTENANCE.md](docs/03-deployment/MAINTENANCE.md)** - Инструкции по обслуживанию
 
 ## Performance Optimization
 
@@ -16,7 +22,7 @@ This project includes performance optimizations:
 - Optimized build configuration in `astro.config.mjs`
 - Automatic sitemap generation
 - SEO-optimized structure
-- Ready-to-use image optimization strategies (see [PERFORMANCE_OPTIMIZATION.md](./PERFORMANCE_OPTIMIZATION.md) for guidelines)
+- Ready-to-use image optimization strategies (see [PERFORMANCE_OPTIMIZATION.md](docs/04-optimization/PERFORMANCE_OPTIMIZATION.md) for guidelines)
 - Optimized asset delivery
 
 ## CI/CD Setup
@@ -26,7 +32,7 @@ This project includes a CI/CD setup through GitHub Actions:
 - Automatic deployment to GitHub Pages when changes are pushed to the `main` branch
 - Separate deployment workflow for Netlify
 - Code formatting, type checking, and building are verified during CI
-- See [CI_CD_SETUP.md](./CI_CD_SETUP.md) for detailed configuration
+- See [CI_CD_SETUP.md](docs/03-deployment/CI_CD_SETUP.md) for detailed configuration
 
 ## Contact backend (local/demo)
 
