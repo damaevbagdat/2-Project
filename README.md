@@ -1,8 +1,12 @@
-# my-first-project
+# 🔧 Remont Spectehniki - Website
 
-![CI](https://github.com/damaevbagdat/my-first-project/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/damaevbagdat/2-Project/actions/workflows/ci.yml/badge.svg)
 
-Learning to code with Cursor AI
+Сайт компании по ремонту спецтехники в Казахстане
+
+**Домен**: remont-spectehniki.kz (планируется)
+**Статус**: Development
+**Базовый шаблон**: Halcyon theme (адаптируется под новый бренд)
 
 ## 📚 Документация
 
