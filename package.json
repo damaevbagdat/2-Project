@@ -1,7 +1,7 @@
 {
-  "name": "my-first-project",
+  "name": "gose-kz",
   "version": "1.0.0",
-  "description": "Learning to code with Cursor AI",
+  "description": "GOSE.KZ - Компания по ремонту спецтехники в Казахстане",
   "main": "index.js",
   "scripts": {
     "dev": "astro dev",
@@ -17,15 +17,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/damaevbagdat/my-first-project.git"
+    "url": "git+https://github.com/damaevbagdat/gose-kz.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["gose", "kazakhstan", "construction", "equipment", "repair"],
+  "author": "GOSE.KZ",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/damaevbagdat/my-first-project/issues"
+    "url": "https://github.com/damaevbagdat/gose-kz/issues"
   },
-  "homepage": "https://github.com/damaevbagdat/my-first-project#readme",
+  "homepage": "https://gose.kz",
   "devDependencies": {
     "@types/nodemailer": "^6.4.7",
     "@typescript-eslint/eslint-plugin": "^8.46.1",
