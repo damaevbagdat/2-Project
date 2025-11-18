@@ -3,7 +3,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://alash-zan.kz',
+  site: 'https://gose.kz',
   outDir: './dist',
   i18n: {
     // Язык по умолчанию

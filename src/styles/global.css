@@ -1,12 +1,12 @@
 :root {
-  /* Halcyon Dark Theme */
+  /* Industrial Caterpillar Theme */
   /* Основные цвета фона */
-  --primary: #1a1a2e; /* темный фон */
-  --secondary: #16213e; /* вторичный темный */
+  --primary: #1a1a1a; /* почти черный фон */
+  --secondary: #2a2a2a; /* темно-серый */
 
   /* Акцентные цвета */
-  --accent: #c9a961; /* золотой */
-  --accent-light: #e8d4a0; /* светлое золото */
+  --accent: #ff6b35; /* яркий оранжевый (Caterpillar) */
+  --accent-light: #ff8c61; /* светло-оранжевый */
 
   /* Цвета текста */
   --text: #ffffff; /* белый текст */

@@ -4,155 +4,178 @@
     "about": "About",
     "services": "Services",
     "contact": "Contact",
-    "divorce": "Divorce Services",
-    "pretension": "Claims and Litigation",
-    "business": "Legal Counsel for Business"
+    "divorce": "Equipment Repair",
+    "pretension": "Metalworking",
+    "business": "Parts & Supplies"
   },
   "buttons": {
-    "contact": "Get consultation",
+    "contact": "Order Repair",
     "send": "Send"
   },
   "headings": {
     "services": "Our services"
   },
   "footer": {
-    "tagline": "Premium law firm in Kazakhstan",
+    "tagline": "Professional heavy equipment repair in Kazakhstan",
     "contact": "Contact",
-    "address": "Nur-Sultan, st. XXX, bld. XX",
+    "address": "Kazakhstan",
     "social": "Social",
     "nav": "Navigation",
-    "copyright": "© 2025 Halcyon. All rights reserved. Republic of Kazakhstan"
+    "copyright": "© 2025 Heavy Equipment Repair. All rights reserved. Republic of Kazakhstan"
   },
   "hero": {
-    "title": "HALCYON",
-    "subtitle": "Premium Legal Services in Kazakhstan",
-    "imageAlt": "Professional lawyer - business consultation",
-    "cta": "Get Consultation"
+    "title": "Professional Heavy Equipment and Diesel Engine Repair",
+    "subtitle": "Quality service and repair of heavy equipment, including diagnostics, parts replacement and equipment setup.",
+    "imageAlt": "Heavy equipment and diesel engine repair",
+    "cta": "Schedule Repair"
   },
   "sections": {
-    "divorceTitle": "Services for",
-    "divorceTitleAccent": "Divorce",
-    "divorceSubtitle": "turnkey",
-    "divorceDesc": "Turnkey divorce and dissolution of marriage — without your personal participation, presence, or even the consent of the second spouse. We will help you protect your interests at all stages of the process.",
-    "pretensionTitle": "Claims and Litigation",
-    "pretensionDescription": "If you are facing unfulfilled obligations — unpaid debt, contract breach, or substandard service — we will help restore justice. We handle everything from pre-trial settlement to full court representation.",
-    "businessHighlight": "Your Pocket Lawyer",
-    "businessTitle": "for business",
-    "businessDescription": "Your personal lawyer on retainer — always available and ready to promptly resolve any legal matter for your company. You don't need to maintain in-house counsel; we provide the full spectrum of services and cost optimization.",
+    "divorceTitle": "Excavator-Loader",
+    "divorceTitleAccent": "Repair Services",
+    "divorceSubtitle": "all brands",
+    "divorceDesc": "Professional repair of excavator-loaders of all brands: JCB, Komatsu, CAT, Volvo, Case and others. Mobile brigades with on-site diagnostics and repair of your equipment.",
+    "pretensionTitle": "Metalworking and Restoration",
+    "pretensionDescription": "Full range of metalworking services: turning and milling, heat treatment, boring, manufacturing of bushings, pins and seals. Metal product restoration and overlay welding.",
+    "businessHighlight": "Parts & Consumables",
+    "businessTitle": "in stock",
+    "businessDescription": "Wide range of parts, oils, filters and consumables for heavy equipment in stock and on order. Flexible prices, discounts, fast delivery throughout Kazakhstan.",
     "advantagesTitle": "Our advantages",
-    "contactTitle": "Contact Me"
+    "contactTitle": "Contact Us",
+    "pricingTitle": "Service Rates",
+    "pricingSubtitle": "We offer a wide range of services for heavy equipment and diesel engine repair.",
+    "processTitle": "Heavy Equipment Repair: From Diagnostics to Delivery",
+    "processSubtitle": "We perform a complete cycle of heavy equipment repair work."
+  },
+  "pricing": {
+    "service1": {
+      "category": "Complete engine overhaul",
+      "title": "Engine Repair",
+      "price": "from 600,000 ₸"
+    },
+    "service2": {
+      "category": "Computer vehicle diagnostics",
+      "title": "Auto Diagnostics",
+      "price": "from 30,000 ₸"
+    },
+    "service3": {
+      "category": "Timing belt and chain replacement",
+      "title": "Timing Belt Services",
+      "price": "from 18,000 ₸"
+    }
+  },
+  "process": {
+    "step1": {
+      "title": "Diagnostics",
+      "desc": "We perform initial diagnostics to determine the condition of heavy equipment."
+    },
+    "step2": {
+      "title": "Repair",
+      "desc": "We perform necessary repair work, whether it's major overhaul or minor repairs."
+    },
+    "step3": {
+      "title": "Delivery",
+      "desc": "We do a final check and deliver the completed work to the customer."
+    }
   },
   "divorce": {
     "service1": {
-      "title": "Divorce without your participation",
-      "desc": "We will help you conduct all legal procedures — from preparing documents to representing your interests in court. You don't need to waste time and nerves — entrust the process to professionals."
+      "title": "Excavator-Loader Repair",
+      "desc": "Comprehensive repair of excavator-loaders of all brands: JCB, Komatsu, CAT, Volvo, Terex, Case, John Deere, New Holland, Hidromek and others. Diagnostics, hydraulic, engine, transmission repair."
     },
     "service2": {
-      "title": "Divorce without spouse consent",
-      "desc": "If the second spouse does not agree or does not appear in court, we will provide competent support and protection of your interests, even if the spouse actively opposes the divorce."
+      "title": "Mobile Repair Crews",
+      "desc": "Specialists visit your site for equipment diagnostics and repair. Prompt troubleshooting without transporting equipment to service. We work throughout Kazakhstan."
     },
     "service3": {
-      "title": "Divorce with or without children",
-      "desc": "We successfully handle cases with or without children. We will take on all legal issues: division of property, determination of the child's place of residence, collection of alimony. Your interests are in safe hands."
+      "title": "Boring and Hole Restoration",
+      "desc": "Professional boring of worn holes for bushings. Restoration of mounting locations in frames, booms, buckets. High-precision equipment and experienced craftsmen."
     },
     "service4": {
-      "title": "Divorce when spouse's location is unknown",
-      "desc": "Even if your spouse's whereabouts are unknown, we will initiate legal proceedings, carry out all necessary procedures and achieve official dissolution of marriage without delays."
+      "title": "Manufacturing Bushings, Pins, Seals",
+      "desc": "Production of bushings, pins, seals and other parts by sample or drawings. In stock and made to order. Quality materials and strict dimensional control."
     },
     "service5": {
-      "title": "Alimony collection",
-      "desc": "We will prepare a complete package of documents, analyze your income and court and ensure a fair decision. You will receive reliable protection — quickly, legally, and without unnecessary complications."
+      "title": "Welding and Overlay of Metal Structures",
+      "desc": "Welding work of any complexity: repair of frames, booms, buckets, metal structures. Overlay of worn parts to restore geometry and increase service life."
     },
     "service6": {
-      "title": "Determining child visitation schedule",
-      "desc": "For parents who want to establish a clear order of meetings with the child. We will help develop a convenient and fair schedule that meets the interests of the child and achieve official dissolution of rights without delays."
+      "title": "Cardan Shaft Repair",
+      "desc": "Diagnostics, repair and balancing of heavy equipment cardan shafts. Replacement of crosses, bearings, spline joints. Quality and durability guarantee."
     }
   },
   "pretension": {
     "service1": {
-      "title": "Pre-trial Settlement",
-      "description": "We draft and send a pre-trial claim to the opposing party with a clear description of violations, demands, and deadline for compliance. This often allows resolving the dispute amicably, without court proceedings and unnecessary expenses."
+      "title": "Turning Work",
+      "description": "Turning of parts of any complexity: shafts, bushings, pins, axles. Manufacturing by drawings and samples. High-precision equipment for metal processing."
     },
     "service2": {
-      "title": "Evidence Base Formation",
-      "description": "We thoroughly analyze the situation, collect and systematize documents, expert opinions, testimonies, and other evidence."
+      "title": "Milling Work",
+      "description": "Milling of flat and shaped surfaces, grooves, channels. Manufacturing of parts with complex geometry. We work with various metals and alloys."
     },
     "service3": {
-      "title": "Court Representation",
-      "description": "If the dispute cannot be settled amicably, we prepare the statement of claim, file it with the court, and fully represent your interests at hearings."
+      "title": "Metal Heat Treatment",
+      "description": "Heat treatment of parts to increase hardness and wear resistance. Hardening, tempering, normalization. Observance of technological regimes for each metal type."
     },
     "service4": {
-      "title": "Working with Any Opponents",
-      "description": "We handle cases not only with companies and private individuals, but also with government agencies."
+      "title": "Band Saw Metal Cutting",
+      "description": "Cutting of metal products and blanks on band saw machine. Precise and even cuts without material deformation. Various metal sizes."
     }
   },
   "business": {
     "service1": {
-      "title": "Contract Analysis",
-      "description": "We analyze every clause of the contract: review terms, legal consequences, and potential legal risks. Such analysis allows you to minimize risks and avoid future conflicts."
+      "title": "Heavy Equipment Parts",
+      "description": "Wide range of original and aftermarket parts for excavator-loaders of all brands. In stock and on order with fast delivery throughout Kazakhstan."
     },
     "service2": {
-      "title": "Contract Development and Support",
-      "description": "We create new contracts for specific tasks of your business: supply, lease, contracting, service provision, etc. If the partner's terms don't align with your interests, we will draft a protocol of disagreements and ensure amendments are made."
+      "title": "Oils and Lubricants",
+      "description": "Motor, hydraulic and transmission oils from leading manufacturers. Oil selection according to equipment manufacturer recommendations. Certified products."
     },
     "service3": {
-      "title": "Counterparty Verification",
-      "description": "Before entering into a transaction, it's important to know who you're dealing with. We verify counterparties for debts, litigation, registry entries, and other factors that may affect cooperation."
+      "title": "Filters and Consumables",
+      "description": "High quality oil, air, fuel and hydraulic filters. Consumables for maintenance. Always in stock at warehouse."
     },
     "service4": {
-      "title": "Preparation of Official Letters and Responses",
-      "description": "We prepare legally competent letters, inquiries, and responses for negotiations with partners, clients, government, or state agencies. Such business correspondence helps effectively protect your interests."
-    },
-    "service5": {
-      "title": "Working with Government Agencies",
-      "description": "If your business faces an inspection or dispute, we take control of the process. We participate in negotiations with various agencies, prepare objections and complaints, and appeal unlawful actions or decisions."
-    },
-    "service6": {
-      "title": "Trademark Registration and Intellectual Property Protection",
-      "description": "We help register trademarks, patents, and other intellectual property objects, so that no one can unlawfully use your development or brand."
-    },
-    "service7": {
-      "title": "Comprehensive Legal Business Support",
-      "description": "We are always by your side — from documentation on current issues to supporting large-scale projects. Regardless of the situation, you receive a complete solution, risk reduction, and optimization for business development."
+      "title": "Flexible Prices and Delivery",
+      "description": "We provide discounts to regular customers and for bulk purchases. Fast delivery throughout Kazakhstan. We work with major transport companies."
     }
   },
   "advantages": {
     "adv1": {
-      "title": "Years of practice",
-      "desc": "Legal practice experience of more than 10 years."
+      "title": "Experienced Specialists",
+      "desc": "Our craftsmen have many years of experience in repairing heavy equipment of all brands and models."
     },
     "adv2": {
-      "title": "Confidentiality",
-      "desc": "We guarantee complete confidentiality of your information. All data received during the work is protected and not transferred to third parties without your consent."
+      "title": "Mobile Crews",
+      "desc": "Site visit for diagnostics and on-site equipment repair. We work throughout Kazakhstan."
     },
     "adv3": {
-      "title": "Personal approach",
-      "desc": "Individual work with each client allows solving even the most complex problems."
+      "title": "Modern Equipment",
+      "desc": "We use high-precision equipment for turning, milling and welding work."
     },
     "adv4": {
-      "title": "Excellent service",
-      "desc": "We provide quality service and value our clients."
+      "title": "Parts in Stock",
+      "desc": "Large warehouse of original and aftermarket parts. Fast delivery throughout Kazakhstan."
     },
     "adv5": {
-      "title": "Efficiency",
-      "desc": "For each case, we allocate a specialist who works only with your company."
+      "title": "Flexible Prices",
+      "desc": "We provide discounts to regular customers and for large orders. Transparent pricing."
     },
     "adv6": {
-      "title": "Benefit",
-      "desc": "We have fixed prices for standard services, so you always know what you are paying for."
+      "title": "Quality Guarantee",
+      "desc": "We guarantee all completed work and installed parts."
     }
   },
   "contact": {
     "subtitle": "Choose convenient way",
-    "desc": "Contact me in any way and I will help solve your legal issues",
+    "desc": "Contact us in any convenient way for consultation on repairing your heavy equipment",
     "whatsappDesc": "Quick response",
     "telegramDesc": "Messenger",
     "instagramDesc": "Follow the news",
-    "phoneDesc": "Call",
-    "formTitle": "Send Message",
+    "phoneDesc": "Call or SMS",
+    "formTitle": "Send Request",
     "formLabelName": "Your Name",
     "formLabelPhone": "Phone",
-    "formLabelMessage": "Message",
-    "formSubmit": "Send"
+    "formLabelMessage": "Problem description or service",
+    "formSubmit": "Send Request"
   }
 }

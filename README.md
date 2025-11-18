@@ -1,12 +1,14 @@
-# 🔧 Remont Spectehniki - Website
+# 🏗️ GOSE.KZ - Website
 
 ![CI](https://github.com/damaevbagdat/2-Project/actions/workflows/ci.yml/badge.svg)
+![Deploy](https://github.com/damaevbagdat/2-Project/actions/workflows/deploy-gose.yml/badge.svg)
 
-Сайт компании по ремонту спецтехники в Казахстане
+Корпоративный сайт компании GOSE по ремонту спецтехники в Казахстане
 
-**Домен**: remont-spectehniki.kz (планируется)
-**Статус**: Development
-**Базовый шаблон**: Halcyon theme (адаптируется под новый бренд)
+**Домен**: gose.kz
+**Статус**: Production Ready
+**Сервер**: 194.32.142.237 (PS.KZ VPS)
+**Технологии**: Astro 5.14.4 + TypeScript
 
 ## 📚 Документация
 

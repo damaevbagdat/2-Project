@@ -1,0 +1,127 @@
+---
+import '../styles/global.css';
+import { t } from '../i18n/index';
+
+export interface Props { lang?: string }
+const { lang = 'ru' } = Astro.props;
+
+const steps = [
+  { icon: '🔧', titleKey: 'process.step1.title', descKey: 'process.step1.desc' },
+  { icon: '⚙️', titleKey: 'process.step2.title', descKey: 'process.step2.desc' },
+  { icon: '⏱️', titleKey: 'process.step3.title', descKey: 'process.step3.desc' }
+];
+---
+
+<section class="process-section">
+  <div class="container">
+    <h2 class="section-title">{t('sections.processTitle', lang)}</h2>
+    <p class="section-subtitle">{t('sections.processSubtitle', lang)}</p>
+
+    <div class="process-grid">
+      {steps.map((step, index) => (
+        <div class="process-step">
+          <div class="step-icon">{step.icon}</div>
+          <p class="step-desc">{t(step.descKey, lang)}</p>
+          {index < steps.length - 1 && (
+            <div class="step-arrow">→</div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+.process-section {
+  padding: 8rem 5%;
+  background: var(--secondary);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin-bottom: 4rem;
+  line-height: 1.8;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  position: relative;
+}
+
+.process-step {
+  text-align: center;
+  position: relative;
+}
+
+.step-icon {
+  width: 120px;
+  height: 120px;
+  background: var(--gradient-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem;
+  font-size: 3rem;
+  box-shadow: 0 10px 30px rgba(201, 169, 97, 0.3);
+}
+
+.step-desc {
+  color: var(--text-muted);
+  line-height: 1.8;
+  font-size: 1rem;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+.step-arrow {
+  position: absolute;
+  top: 60px;
+  right: -1rem;
+  font-size: 2rem;
+  color: var(--accent);
+  font-weight: 300;
+}
+
+@media (max-width: 768px) {
+  .process-section {
+    padding: 4rem 1rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .process-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .step-arrow {
+    display: none;
+  }
+
+  .step-icon {
+    width: 100px;
+    height: 100px;
+    font-size: 2.5rem;
+  }
+}
+</style>

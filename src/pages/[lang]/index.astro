@@ -1,9 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Hero from '../../components/Hero.astro';
-import DivorceSection from '../../components/DivorceSection.astro';
-import PretensionSection from '../../components/PretensionSection.astro';
-import BusinessSection from '../../components/BusinessSection.astro';
+import PricingSection from '../../components/PricingSection.astro';
+import ProcessSection from '../../components/ProcessSection.astro';
 import AdvantagesSection from '../../components/AdvantagesSection.astro';
 import ContactSection from '../../components/ContactSection.astro';
 
@@ -17,16 +16,16 @@ export async function getStaticPaths() {
 // Define localized titles and descriptions
 const localizedContent = {
   ru: {
-    title: 'Halcyon | Юридические услуги премиум-класса в Казахстане',
-    description: 'Halcyon - юридическая помощь премиум-класса в Казахстане. Расторжение брака, претензионно-исковая работа, юрист для бизнеса. Полная конфиденциальность и профессиональный подход.'
+    title: 'Ремонт спецтехники и дизельных двигателей в Казахстане',
+    description: 'Профессиональный ремонт спецтехники и дизельных двигателей. Диагностика, замена деталей, капитальный ремонт ДВС. Гибкие цены, запчасти в наличии.'
   },
   en: {
-    title: 'Halcyon | Premium Legal Services in Kazakhstan',
-    description: 'Halcyon - premium legal services in Kazakhstan. Divorce services, pre-trial and litigation work, business legal support. Complete confidentiality and professional approach.'
+    title: 'Heavy Equipment and Diesel Engine Repair in Kazakhstan',
+    description: 'Professional heavy equipment and diesel engine repair. Diagnostics, parts replacement, engine overhaul. Flexible prices, parts in stock.'
   },
   kz: {
-    title: 'Halcyon | Қазақстанда премиум-класс заңгерлік қызметтер',
-    description: 'Halcyon - Қазақстанда премиум-класс заңгерлік көмек. Некені бұзу, сотқа дейінгі және сот жұмысы, бизнес үшін заңгер. Толық құпиялылық және кәсіби көзқарас.'
+    title: 'Қазақстанда арнайы техника мен дизельді қозғалтқыштарды жөндеу',
+    description: 'Арнайы техника мен дизельді қозғалтқыштарды кәсіби жөндеу. Диагностика, бөлшектерді ауыстыру, қозғалтқышты күрделі жөндеу. Икемді бағалар, қосалқы бөлшектер қорда.'
   }
 };
 
@@ -35,9 +34,8 @@ const content = localizedContent[locale] || localizedContent.ru;
 
 <BaseLayout lang={locale} title={content.title} description={content.description}>
   <Hero lang={locale} />
-  <DivorceSection lang={locale} />
-  <PretensionSection lang={locale} />
-  <BusinessSection lang={locale} />
+  <PricingSection lang={locale} />
+  <ProcessSection lang={locale} />
   <AdvantagesSection lang={locale} />
   <ContactSection lang={locale} />
 </BaseLayout>
