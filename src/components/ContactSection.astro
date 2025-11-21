@@ -55,8 +55,8 @@ const { lang = 'ru' } = Astro.props;
           </div>
           <!-- Honeypot field - hidden from users, visible to bots -->
           <input type="text" name="website" value="" style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1" autocomplete="off" aria-hidden="true" />
-          <!-- Cloudflare Turnstile invisible CAPTCHA -->
-          <div class="cf-turnstile" data-sitekey="0x4AAAAAACCP9jEjq3awNng6" data-theme="light" data-size="invisible"></div>
+          <!-- Cloudflare Turnstile invisible CAPTCHA (commented out for now) -->
+          <!-- <div class="cf-turnstile" data-sitekey="0x4AAAAAACCP9jEjq3awNng6" data-theme="light" data-size="invisible"></div> -->
           <button type="submit" class="cta-button form-submit">{t('contact.formSubmit', lang)}</button>
         </form>
       </div>
@@ -64,8 +64,8 @@ const { lang = 'ru' } = Astro.props;
   </div>
 </section>
 
-<!-- Load Cloudflare Turnstile script -->
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<!-- Cloudflare Turnstile script (commented out for now) -->
+<!-- <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script> -->
 
 <style>
 .contact-section {
@@ -288,20 +288,13 @@ const { lang = 'ru' } = Astro.props;
       button.textContent = lang === 'ru' ? 'Отправка...' : lang === 'kz' ? 'Жіберілуде...' : 'Sending...';
 
       try {
-        // Trigger Turnstile invisible challenge
+        // Trigger Turnstile invisible challenge (optional, skipped if not loaded)
         let turnstileToken = '';
         if (typeof window.turnstile !== 'undefined') {
           try {
-            // Execute invisible challenge and wait for token
-            turnstileToken = await new Promise((resolve) => {
-              window.turnstile.execute('.cf-turnstile', {
-                callback: function(token) {
-                  resolve(token);
-                }
-              });
-            });
+            turnstileToken = await window.turnstile.getResponse();
           } catch (e) {
-            console.log('Turnstile verification failed', e);
+            console.log('Turnstile not loaded, continuing without it', e);
           }
         }
 
