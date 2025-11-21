@@ -53,12 +53,19 @@ const { lang = 'ru' } = Astro.props;
             <label>{t('contact.formLabelMessage', lang)}</label>
             <textarea name="message" required></textarea>
           </div>
+          <!-- Honeypot field - hidden from users, visible to bots -->
+          <input type="text" name="website" value="" style="position: absolute; left: -9999px; width: 1px; height: 1px;" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <!-- Cloudflare Turnstile invisible CAPTCHA -->
+          <div class="cf-turnstile" data-sitekey="YOUR_SITE_KEY_HERE" data-theme="light" data-size="invisible"></div>
           <button type="submit" class="cta-button form-submit">{t('contact.formSubmit', lang)}</button>
         </form>
       </div>
     </div>
   </div>
 </section>
+
+<!-- Load Cloudflare Turnstile script -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
 <style>
 .contact-section {
@@ -253,36 +260,81 @@ const { lang = 'ru' } = Astro.props;
       const name = formData.get('name');
       const phone = formData.get('phone');
       const message = formData.get('message');
+      const honeypot = formData.get('website');
+
+      // Bot protection: Honeypot check
+      if (honeypot) {
+        console.log('Bot detected - honeypot field filled');
+        return; // Silently reject bot submissions
+      }
+
+      // Rate limiting: Check last submission time
+      const lastSubmit = localStorage.getItem('lastContactSubmit');
+      const now = Date.now();
+      if (lastSubmit && now - parseInt(lastSubmit) < 60000) {
+        const waitTime = Math.ceil((60000 - (now - parseInt(lastSubmit))) / 1000);
+        const messages = {
+          ru: `Пожалуйста, подождите ${waitTime} секунд перед следующей отправкой.`,
+          kz: `Келесі жіберу алдында ${waitTime} секунд күтіңіз.`,
+          en: `Please wait ${waitTime} seconds before submitting again.`
+        };
+        alert(messages[lang] || messages.ru);
+        return;
+      }
 
       const button = form.querySelector('button[type="submit"]') as HTMLButtonElement;
       const originalText = button.textContent;
       button.disabled = true;
       button.textContent = lang === 'ru' ? 'Отправка...' : lang === 'kz' ? 'Жіберілуде...' : 'Sending...';
 
-      const telegramMessage = `🔔 <b>Новая заявка с сайта</b>\n\n👤 <b>Имя:</b> ${name}\n📱 <b>Телефон:</b> ${phone}\n💬 <b>Сообщение:</b>\n${message}\n\n🌐 <b>Источник:</b> gose.kz`;
-
       try {
-        const response = await fetch('https://api.telegram.org/bot8595746534:AAHsGgCTkU0eGYZApC4RGxQknzd3xd3NVO8/sendMessage', {
+        // Get Turnstile token (if configured)
+        let turnstileToken = '';
+        const turnstileElement = form.querySelector('.cf-turnstile');
+        if (turnstileElement && typeof window.turnstile !== 'undefined') {
+          try {
+            turnstileToken = window.turnstile.getResponse(turnstileElement);
+          } catch (e) {
+            console.log('Turnstile not configured or failed', e);
+          }
+        }
+
+        // Send through backend API (bot token is now securely hidden on server)
+        const response = await fetch('/api/gose-contact', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            chat_id: '8102988635',
-            text: telegramMessage,
-            parse_mode: 'HTML'
+            name,
+            phone,
+            message,
+            honeypot, // Server will check this
+            turnstileToken, // Turnstile CAPTCHA token (when configured)
           })
         });
 
-        const messages = {
+        const result = await response.json();
+
+        const successMessages = {
           ru: 'Спасибо! Ваше сообщение отправлено.',
           kz: 'Рахмет! Хабарламаңыз жіберілді.',
           en: 'Thank you! Your message has been sent.'
         };
 
-        if (response.ok) {
-          alert(messages[lang] || messages.ru);
+        const errorMessages = {
+          ru: 'Ошибка отправки. Попробуйте позже.',
+          kz: 'Жіберу қатесі. Кейінірек қайталап көріңіз.',
+          en: 'Sending error. Please try again later.'
+        };
+
+        if (response.ok && result.success) {
+          // Save submission time for rate limiting
+          localStorage.setItem('lastContactSubmit', now.toString());
+          alert(successMessages[lang] || successMessages.ru);
           form.reset();
         } else {
-          alert('Ошибка отправки. Попробуйте позже.');
+          // Handle specific error messages from server
+          const errorMsg = result.message || errorMessages[lang] || errorMessages.ru;
+          alert(errorMsg);
         }
       } catch (error) {
         alert('Ошибка отправки. Попробуйте позже.');
