@@ -1,0 +1,45 @@
+name: Update Security Headers
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-headers:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Update security headers on server
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SERVER_HOST: ${{ secrets.SERVER_HOST }}
+          SERVER_USER: ${{ secrets.SERVER_USER }}
+        run: |
+          # Setup SSH
+          mkdir -p ~/.ssh
+          echo "$SSH_PRIVATE_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -H $SERVER_HOST >> ~/.ssh/known_hosts
+
+          # Upload security update script
+          scp -i ~/.ssh/deploy_key update-gose-security-headers.sh $SERVER_USER@$SERVER_HOST:~/
+
+          # Execute script on server
+          ssh -i ~/.ssh/deploy_key $SERVER_USER@$SERVER_HOST "chmod +x ~/update-gose-security-headers.sh && bash ~/update-gose-security-headers.sh"
+
+          # Cleanup
+          rm ~/.ssh/deploy_key
+
+      - name: Summary
+        run: |
+          echo "## 🔒 Security Headers Updated!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "✅ Added to gose.kz:" >> $GITHUB_STEP_SUMMARY
+          echo "- X-Frame-Options: SAMEORIGIN" >> $GITHUB_STEP_SUMMARY
+          echo "- X-Content-Type-Options: nosniff" >> $GITHUB_STEP_SUMMARY
+          echo "- X-XSS-Protection: 1; mode=block" >> $GITHUB_STEP_SUMMARY
+          echo "- Referrer-Policy: strict-origin-when-cross-origin" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "🌐 Verify: https://gose.kz" >> $GITHUB_STEP_SUMMARY
