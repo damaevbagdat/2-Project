@@ -71,8 +71,14 @@ jobs:
           # Upload build archive
           scp -i ~/.ssh/deploy_key gose-build.tar.gz $SERVER_USER@$SERVER_HOST:/tmp/
 
+          # Upload security headers update script
+          scp -i ~/.ssh/deploy_key update-gose-security-headers.sh $SERVER_USER@$SERVER_HOST:~/
+
           # Run deployment script
           ssh -i ~/.ssh/deploy_key $SERVER_USER@$SERVER_HOST "bash ~/deploy-gose.sh $VERSION"
+
+          # Update security headers if script exists
+          ssh -i ~/.ssh/deploy_key $SERVER_USER@$SERVER_HOST "if [ -f ~/update-gose-security-headers.sh ]; then chmod +x ~/update-gose-security-headers.sh && bash ~/update-gose-security-headers.sh || echo 'Security headers already configured'; fi"
 
           # Cleanup
           rm ~/.ssh/deploy_key
