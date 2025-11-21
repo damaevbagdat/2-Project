@@ -306,7 +306,7 @@ const { lang = 'ru' } = Astro.props;
         }
 
         // Send through backend API (bot token is now securely hidden on server)
-        const response = await fetch('/api/gose-contact', {
+        const response = await fetch('/api/gose-contact.php', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
