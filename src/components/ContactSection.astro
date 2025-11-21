@@ -288,14 +288,20 @@ const { lang = 'ru' } = Astro.props;
       button.textContent = lang === 'ru' ? 'Отправка...' : lang === 'kz' ? 'Жіберілуде...' : 'Sending...';
 
       try {
-        // Get Turnstile token (if configured)
+        // Trigger Turnstile invisible challenge
         let turnstileToken = '';
-        const turnstileElement = form.querySelector('.cf-turnstile');
-        if (turnstileElement && typeof window.turnstile !== 'undefined') {
+        if (typeof window.turnstile !== 'undefined') {
           try {
-            turnstileToken = window.turnstile.getResponse(turnstileElement);
+            // Execute invisible challenge and wait for token
+            turnstileToken = await new Promise((resolve) => {
+              window.turnstile.execute('.cf-turnstile', {
+                callback: function(token) {
+                  resolve(token);
+                }
+              });
+            });
           } catch (e) {
-            console.log('Turnstile not configured or failed', e);
+            console.log('Turnstile verification failed', e);
           }
         }
 
