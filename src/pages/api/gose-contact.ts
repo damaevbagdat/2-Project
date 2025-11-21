@@ -4,8 +4,8 @@ import type { APIRoute } from 'astro';
 const TELEGRAM_BOT_TOKEN = '8595746534:AAHsGgCTkU0eGYZApC4RGxQknzd3xd3NVO8';
 const TELEGRAM_CHAT_ID = '8102988635';
 
-// Cloudflare Turnstile secret key - REPLACE WITH YOUR SECRET KEY
-const TURNSTILE_SECRET_KEY = 'YOUR_SECRET_KEY_HERE';
+// Cloudflare Turnstile secret key
+const TURNSTILE_SECRET_KEY = '0x4AAAAAACCP9rzsc8vK70ESdIdJYSbdPOc';
 
 // Rate limiting store (in-memory, resets on server restart)
 const rateLimitMap = new Map<string, number[]>();
