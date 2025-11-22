@@ -12,6 +12,7 @@ const { lang = 'ru' } = Astro.props;
   <div class="container">
     <div class="header-content">
       <a href={localizePath('/', lang)} class="logo">
+        <img src="/logo.png" alt="Gods of special equipment" class="logo-image" />
         <div class="logo-text">
           <span class="logo-title">{t('logo.title', lang)}</span>
           <span class="logo-subtitle">{t('logo.subtitle', lang)}</span>
@@ -94,11 +95,19 @@ const { lang = 'ru' } = Astro.props;
 }
 
 .logo {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
   cursor: pointer;
   text-decoration: none;
   transition: transform 0.3s ease;
   margin-left: 2rem;
+}
+
+.logo-image {
+  height: 60px;
+  width: auto;
+  object-fit: contain;
 }
 
 .logo-text {
@@ -138,6 +147,15 @@ const { lang = 'ru' } = Astro.props;
 }
 
 @media (max-width: 768px) {
+  .logo {
+    margin-left: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .logo-image {
+    height: 40px;
+  }
+
   .logo-title {
     font-size: 1.1rem;
   }
