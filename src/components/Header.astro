@@ -11,12 +11,17 @@ const { lang = 'ru' } = Astro.props;
 <header class="header" id="navbar">
   <div class="container">
     <div class="header-content">
-      <a href={localizePath('/', lang)} class="logo">РЕМОНТ СПЕЦТЕХНИКИ</a>
+      <a href={localizePath('/', lang)} class="logo">
+        <div class="logo-text">
+          <span class="logo-title">{t('logo.title', lang)}</span>
+          <span class="logo-subtitle">{t('logo.subtitle', lang)}</span>
+        </div>
+      </a>
       <nav class="nav">
         <ul class="nav-list">
-          <li><a href="#divorce">{t('nav.divorce', lang)}</a></li>
-          <li><a href="#pretension">{t('nav.pretension', lang)}</a></li>
-          <li><a href="#business">{t('nav.business', lang)}</a></li>
+          <li><a href="#pricing">{t('nav.pricing', lang)}</a></li>
+          <li><a href="#process">{t('nav.process', lang)}</a></li>
+          <li><a href="#advantages">{t('nav.advantages', lang)}</a></li>
           <li><a href="#contact">{t('nav.contact', lang)}</a></li>
         </ul>
       </nav>
@@ -45,9 +50,9 @@ const { lang = 'ru' } = Astro.props;
   <div id="mobile-menu" class="mobile-menu" aria-hidden="true">
     <button class="mobile-close" aria-label="Закрыть меню">×</button>
     <ul class="mobile-nav-list">
-      <li><a href="#divorce">{t('nav.divorce', lang)}</a></li>
-      <li><a href="#pretension">{t('nav.pretension', lang)}</a></li>
-      <li><a href="#business">{t('nav.business', lang)}</a></li>
+      <li><a href="#pricing">{t('nav.pricing', lang)}</a></li>
+      <li><a href="#process">{t('nav.process', lang)}</a></li>
+      <li><a href="#advantages">{t('nav.advantages', lang)}</a></li>
       <li><a href="#contact">{t('nav.contact', lang)}</a></li>
     </ul>
     <div class="mobile-lang-switcher">
@@ -89,19 +94,57 @@ const { lang = 'ru' } = Astro.props;
 }
 
 .logo {
-  font-size: 2rem;
+  display: inline-block;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+  margin-left: 2rem;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.logo-title {
+  font-size: 1.4rem;
   font-weight: 700;
   background: var(--gradient-accent);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  cursor: pointer;
-  text-decoration: none;
-  transition: transform 0.3s ease;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+}
+
+.logo-subtitle {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text);
+  opacity: 0.8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1;
 }
 
 .logo:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
+}
+
+.logo:hover .logo-subtitle {
+  opacity: 1;
+  color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .logo-title {
+    font-size: 1.1rem;
+  }
+
+  .logo-subtitle {
+    font-size: 0.55rem;
+  }
 }
 
 .nav-list {
@@ -141,6 +184,7 @@ const { lang = 'ru' } = Astro.props;
   border-radius: 25px;
   padding: 0.4rem 0.8rem;
   background: rgba(201, 169, 97, 0.1);
+  margin-left: 3rem;
 }
 
 .lang-btn {

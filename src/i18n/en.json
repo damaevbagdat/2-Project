@@ -4,9 +4,13 @@
     "about": "About",
     "services": "Services",
     "contact": "Contact",
-    "divorce": "Equipment Repair",
-    "pretension": "Metalworking",
-    "business": "Parts & Supplies"
+    "pricing": "Service Rates",
+    "process": "Equipment Repair: From Diagnostics to Delivery",
+    "advantages": "Our Advantages"
+  },
+  "logo": {
+    "title": "Gods of special equipment",
+    "subtitle": "HEAVY EQUIPMENT REPAIR SERVICES"
   },
   "buttons": {
     "contact": "Order Repair",

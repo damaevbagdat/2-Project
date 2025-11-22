@@ -4,9 +4,13 @@
     "about": "О компании",
     "services": "Услуги",
     "contact": "Контакты",
-    "divorce": "Ремонт техники",
-    "pretension": "Металлообработка",
-    "business": "Запчасти"
+    "pricing": "Тарифы на услуги",
+    "process": "Ремонт спецтехники: от диагностики до сдачи работы",
+    "advantages": "Наши преимущества"
+  },
+  "logo": {
+    "title": "Gods of special equipment",
+    "subtitle": "УСЛУГИ ПО РЕМОНТУ СПЕЦ.ТЕХНИКИ"
   },
   "buttons": {
     "contact": "Заказать ремонт",
