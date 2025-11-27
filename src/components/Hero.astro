@@ -9,7 +9,6 @@ const { lang = 'ru' } = Astro.props;
 
 <section class="hero">
   <div class="hero-content">
-    <p class="hero-tagline">{t('logo.subtitle', lang)}</p>
     <h1 class="hero-title">{t('hero.title', lang)}</h1>
     <p class="hero-subtitle">{t('hero.subtitle', lang)}</p>
     <a href="#contact" class="cta-button">{t('hero.cta', lang)}</a>
@@ -47,16 +46,6 @@ const { lang = 'ru' } = Astro.props;
   text-align: center;
   z-index: 1;
   animation: fadeInUp 1s ease;
-}
-
-.hero-tagline {
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text);
-  opacity: 0.8;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 1rem;
 }
 
 .hero-title {
@@ -101,11 +90,6 @@ const { lang = 'ru' } = Astro.props;
   .hero {
     padding: 2rem 1rem;
     margin-top: 70px;
-  }
-
-  .hero-tagline {
-    font-size: 0.65rem;
-    letter-spacing: 1.5px;
   }
 
   .hero-title {
