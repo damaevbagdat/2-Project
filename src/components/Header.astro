@@ -12,11 +12,7 @@ const { lang = 'ru' } = Astro.props;
   <div class="container">
     <div class="header-content">
       <a href={localizePath('/', lang)} class="logo">
-        <img src="/logo.png?v=2" alt="Gods of special equipment" class="logo-image" />
-        <div class="logo-text">
-          <span class="logo-title">{t('logo.title', lang)}</span>
-          <span class="logo-subtitle">{t('logo.subtitle', lang)}</span>
-        </div>
+        <span class="logo-title">{t('logo.title', lang)}</span>
       </a>
       <nav class="nav">
         <ul class="nav-list">
@@ -95,25 +91,10 @@ const { lang = 'ru' } = Astro.props;
 }
 
 .logo {
-  display: inline-flex;
-  align-items: center;
-  gap: 1rem;
   cursor: pointer;
   text-decoration: none;
   transition: transform 0.3s ease;
   margin-left: 2rem;
-}
-
-.logo-image {
-  height: 60px;
-  width: auto;
-  object-fit: contain;
-}
-
-.logo-text {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
 }
 
 .logo-title {
@@ -127,41 +108,17 @@ const { lang = 'ru' } = Astro.props;
   letter-spacing: 0.5px;
 }
 
-.logo-subtitle {
-  font-size: 0.65rem;
-  font-weight: 600;
-  color: var(--text);
-  opacity: 0.8;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  line-height: 1;
-}
-
 .logo:hover {
-  transform: scale(1.02);
-}
-
-.logo:hover .logo-subtitle {
-  opacity: 1;
-  color: var(--accent);
+  transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
   .logo {
     margin-left: 0.5rem;
-    gap: 0.5rem;
-  }
-
-  .logo-image {
-    height: 40px;
   }
 
   .logo-title {
     font-size: 1.1rem;
-  }
-
-  .logo-subtitle {
-    font-size: 0.55rem;
   }
 }
 
