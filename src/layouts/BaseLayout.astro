@@ -7,8 +7,8 @@ export interface Props {
 }
 const {
 	lang = 'ru',
-	title = 'Halcyon | Юридические услуги премиум-класса в Казахстане',
-	description = 'Halcyon - юридическая помощь премиум-класса в Казахстане. Расторжение брака под ключ, взыскание алиментов, определение графика общения с ребенком. Полная конфиденциальность и профессиональный подход.'
+	title = 'GOSE | Профессиональный ремонт спецтехники в Казахстане',
+	description = 'GOSE - профессиональный ремонт спецтехники, экскаваторов-погрузчиков, дизельных двигателей. Металлообработка, запчасти в наличии, мобильные бригады. Звоните сейчас!'
 } = Astro.props;
 import '../styles/global.css';
 import '../styles/halcyon-animations.css';
@@ -18,9 +18,9 @@ import { generateHreflangs } from '../i18n/index';
 
 // Define localized site names
 const localizedSiteNames = {
-  ru: 'Halcyon | Юридические услуги премиум-класса в Казахстане',
-  en: 'Halcyon | Premium Legal Services in Kazakhstan',
-  kz: 'Halcyon | Қазақстанда премиум-класс заңгерлік қызметтер'
+  ru: 'GOSE | Ремонт спецтехники в Казахстане',
+  en: 'GOSE | Heavy Equipment Repair in Kazakhstan',
+  kz: 'GOSE | Қазақстанда арнайы техниканы жөндеу'
 };
 
 const siteName = localizedSiteNames[lang] || localizedSiteNames.ru;
@@ -30,9 +30,18 @@ const siteName = localizedSiteNames[lang] || localizedSiteNames.ru;
 <html lang={lang}>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content="ремонт спецтехники Казахстан, ремонт экскаваторов Алматы, ремонт дизельных двигателей, металлообработка, ремонт погрузчиков, запчасти спецтехника, мобильная бригада ремонт, GOSE, Gods of Special Equipment" />
+    <link rel="canonical" href={Astro.url.href} />
+
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://mc.yandex.ru">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://mc.yandex.ru">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/favicon-96x96.png">
@@ -40,32 +49,32 @@ const siteName = localizedSiteNames[lang] || localizedSiteNames.ru;
     <link rel="manifest" href="/site.webmanifest">
     <meta name="msapplication-TileColor" content="#2b2b2b">
     <meta name="theme-color" content="#2b2b2b">
-    
-    <!-- Google tag (gtag.js) - Раскомментируйте, когда получите ID -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script> -->
-    <!-- <script> -->
-    <!--   window.dataLayer = window.dataLayer || []; -->
-    <!--   function gtag(){dataLayer.push(arguments);} -->
-    <!--   gtag('js', new Date()); -->
-    <!--   gtag('config', 'G-XXXXXXXXXX'); -->
-    <!-- </script> -->
-    
-    <!-- Yandex.Metrika counter - Раскомментируйте, когда получите ID -->
-    <!-- <script type="text/javascript" > -->
-    <!--   (function(m,e,t,r,i,k,a){ -->
-    <!--     m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; -->
-    <!--     m[i].l=1*new Date(); -->
-    <!--     k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a) -->
-    <!--   })(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym"); -->
-    <!-- -->
-    <!--   ym(XXXXXXX, "init", { -->
-    <!--     clickmap:true, -->
-    <!--     trackLinks:true, -->
-    <!--     accurateTrackBounce:true, -->
-    <!--     webvisor:true -->
-    <!--   }); -->
-    <!-- </script> -->
-    <!-- <noscript><div><img src="https://mc.yandex.ru/watch/XXXXXXX" style="position:absolute; left:-9999px;" alt="" /></div></noscript> -->
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1EFB30Q8SN"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-1EFB30Q8SN');
+    </script>
+
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+      (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
+
+      ym(105546295, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+      });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/105546295" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <!-- /Yandex.Metrika counter -->
     
     <!-- Open Graph / Facebook -->
@@ -84,8 +93,122 @@ const siteName = localizedSiteNames[lang] || localizedSiteNames.ru;
     <meta property="twitter:image" content={new URL('/og-image.jpg', Astro.url).href} />
     
     {generateHreflangs(Astro.url.pathname).map(item => (
-      <link rel="alternate" href={item.href} hreflang={item.locale} />
+      <link rel="alternate" href={new URL(item.href, Astro.url).href} hreflang={item.locale} />
     ))}
+    <link rel="alternate" href={new URL('/', Astro.site || 'https://gose.kz').href} hreflang="x-default" />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "LocalBusiness",
+            "@id": "https://gose.kz/#localbusiness",
+            "name": "GOSE",
+            "alternateName": "Gods of Special Equipment",
+            "url": "https://gose.kz",
+            "logo": "https://gose.kz/logo.png",
+            "image": "https://gose.kz/og-image.jpg",
+            "description": "Профессиональный ремонт спецтехники, экскаваторов-погрузчиков, дизельных двигателей. Металлообработка, запчасти, мобильные бригады.",
+            "priceRange": "$$",
+            "telephone": "+7-776-005-42-09",
+            "email": "info@gose.kz",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Алматы",
+              "addressRegion": "Алматинская область",
+              "addressCountry": "KZ"
+            },
+            "geo": {
+              "@type": "GeoCoordinates",
+              "latitude": "43.2220",
+              "longitude": "76.8512"
+            },
+            "openingHoursSpecification": {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+              "opens": "08:00",
+              "closes": "20:00"
+            },
+            "areaServed": {
+              "@type": "Country",
+              "name": "Kazakhstan"
+            },
+            "serviceArea": {
+              "@type": "GeoCircle",
+              "name": "Казахстан и регионы"
+            },
+            "hasOfferCatalog": {
+              "@type": "OfferCatalog",
+              "name": "Услуги по ремонту спецтехники",
+              "itemListElement": [
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Ремонт экскаваторов-погрузчиков",
+                    "description": "Комплексный ремонт экскаваторов-погрузчиков всех марок"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Ремонт дизельных двигателей",
+                    "description": "Капитальный и текущий ремонт дизельных двигателей спецтехники"
+                  }
+                },
+                {
+                  "@type": "Offer",
+                  "itemOffered": {
+                    "@type": "Service",
+                    "name": "Металлообработка",
+                    "description": "Токарные, фрезерные работы, сварка, наплавка"
+                  }
+                }
+              ]
+            },
+            "sameAs": [
+              "https://wa.me/77760054209",
+              "https://t.me/+77760054209"
+            ]
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://gose.kz/#organization",
+            "name": "GOSE",
+            "alternateName": "Gods of Special Equipment",
+            "url": "https://gose.kz",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://gose.kz/logo.png",
+              "width": 250,
+              "height": 60
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+7-776-005-42-09",
+              "contactType": "customer service",
+              "areaServed": "KZ",
+              "availableLanguage": ["Russian", "Kazakh", "English"]
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://gose.kz/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Главная",
+                "item": "https://gose.kz/"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
   </head>
   <body>
     <Header lang={lang} />
@@ -93,6 +216,6 @@ const siteName = localizedSiteNames[lang] || localizedSiteNames.ru;
       <slot />
     </main>
     <Footer lang={lang} />
-    <script src="../scripts/observe-fade.js"></script>
+    <script src="../scripts/observe-fade.js" defer></script>
   </body>
 </html>
