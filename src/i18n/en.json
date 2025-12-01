@@ -52,19 +52,44 @@
   },
   "pricing": {
     "service1": {
-      "category": "Complete engine overhaul",
-      "title": "Engine Repair",
-      "price": "from 600,000 ₸"
+      "category": "Hydraulic System Diagnostics",
+      "title": "Hydraulics Diagnostics",
+      "price": "from 45,000 ₸"
     },
     "service2": {
-      "category": "Computer vehicle diagnostics",
-      "title": "Auto Diagnostics",
-      "price": "from 30,000 ₸"
+      "category": "Brake System Diagnostics",
+      "title": "Brake System Diagnostics",
+      "price": "from 45,000 ₸"
     },
     "service3": {
-      "category": "Timing belt and chain replacement",
-      "title": "Timing Belt Services",
-      "price": "from 18,000 ₸"
+      "category": "Air System",
+      "title": "Air System Diagnostics and Repair",
+      "price": "from 80,000 ₸"
+    },
+    "service4": {
+      "category": "Hydraulic Cylinders",
+      "title": "Hydraulic Cylinder Repair and Restoration",
+      "price": "from 80,000 ₸"
+    },
+    "service5": {
+      "category": "Engine Overhaul",
+      "title": "Engine Repair",
+      "price": "from 300,000 ₸"
+    },
+    "service6": {
+      "category": "Transmission Repair",
+      "title": "Gearbox Repair for Heavy Equipment",
+      "price": "from 350,000 ₸"
+    },
+    "service7": {
+      "category": "Installation Work",
+      "title": "Installation/Dismantling",
+      "price": "from 100,000 ₸"
+    },
+    "service8": {
+      "category": "Gearbox Work",
+      "title": "Gearbox Installation/Dismantling",
+      "price": "from 100,000 ₸"
     }
   },
   "process": {
