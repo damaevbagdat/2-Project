@@ -53,35 +53,35 @@
   "pricing": {
     "service1": {
       "title": "Hydraulic System Diagnostics",
-      "price": "from 45,000 ₸"
+      "price": "from 60,000 ₸"
     },
     "service2": {
       "title": "Brake System Diagnostics",
-      "price": "from 45,000 ₸"
+      "price": "from 60,000 ₸"
     },
     "service3": {
       "title": "Air System Diagnostics and Repair",
-      "price": "from 80,000 ₸"
+      "price": "from 100,000 ₸"
     },
     "service4": {
       "title": "Hydraulic Cylinder Repair and Restoration",
-      "price": "from 80,000 ₸"
+      "price": "from 100,000 ₸"
     },
     "service5": {
       "title": "Engine Overhaul",
-      "price": "from 300,000 ₸"
+      "price": "from 400,000 ₸"
     },
     "service6": {
       "title": "Gearbox Repair for Heavy Equipment",
-      "price": "from 350,000 ₸"
+      "price": "from 450,000 ₸"
     },
     "service7": {
       "title": "Engine Installation/Dismantling",
-      "price": "from 100,000 ₸"
+      "price": "from 140,000 ₸"
     },
     "service8": {
       "title": "Gearbox Installation/Dismantling",
-      "price": "from 100,000 ₸"
+      "price": "from 140,000 ₸"
     }
   },
   "process": {
